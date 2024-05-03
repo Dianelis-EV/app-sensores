@@ -11,6 +11,9 @@ import android.util.Log;
 import com.example.base_dato.bd_connection;
 import com.example.base_dato.bd_manager;
 
+import java.lang.reflect.Array;
+import java.util.ArrayList;
+
 
 public class MainActivity extends AppCompatActivity {
 
@@ -18,22 +21,10 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        bd_connection manager = new bd_connection(MainActivity.this);
+       bd_manager manager = new bd_manager(MainActivity.this);
+       //prueba
 
-        manager.onCreate(manager.getWritableDatabase());
-        checkDataBase();
 
     }
-    private boolean checkDataBase() {
-        SQLiteDatabase checkDB = null;
-         String path = getDatabasePath("sensores_inteligentes.db").toString();
-        try {
-            checkDB = SQLiteDatabase.openDatabase(path, null, SQLiteDatabase.OPEN_READONLY);
-            Log.e("Error", "existe la base de datos " );
-            checkDB.close();
-        } catch (SQLiteException e) {
-            Log.e("Error", "No existe la base de datos " + e.getMessage());
-        }
-        return checkDB != null;
-    }
+
 }
