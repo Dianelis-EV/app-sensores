@@ -31,17 +31,17 @@ public class bd_manager  {
     private static final String Person_phone = "telefono";
 
     //tabla dato-participante
-    private static final String Table_data_person = "dato_participante";
+    private static final String Table_data_person = "datoparticipante";
     private static final String data_id  = "id";
-    private static final String id_person = "id-participante";
+    private static final String id_person = "idparticipante";
     private static final String data_date = "fecha";
     private static final String data_hour = "hora";
     private static final String data_age = "edad";
     private static final String data_patologia = "patologia";
-    private static final String data_shoes = "numero-de-calzado";
-    private static final String data_medicion = "medicion-cintura-tobillo";
-    private static final String data_long_leg = "largo-pierna";
-    private static final String data_height = "altura-del-sensor";
+    private static final String data_shoes = "numerodecalzado";
+    private static final String data_medicion = "medicioncinturatobillo";
+    private static final String data_long_leg = "largopierna";
+    private static final String data_height = "alturadelsensor";
     private static final String data_observation = "observacion";
 
 
@@ -249,17 +249,17 @@ public class bd_manager  {
         return list;
     }
 
-    public int person_getID(String ci){
+    public int person_getID(String ci_person){
         int id=-1;
         this.open_to_read();
-        String [] whereArgs = new String[]{ci};
-        Cursor result = database.rawQuery("Select id from  participante where ci = " + '"' + ci + '"',null);
+        String [] whereArgs = new String[]{ci_person};
+        Cursor result = database.rawQuery("Select id from  participante where ci =   "  + '"' +ci_person + '"',null);
 
         if(result.moveToFirst()){
-            do {
+           // do {
                 int col= result.getColumnIndex(Person_id);
                 id = result.getInt(col);
-            } while (result.moveToNext());
+           // } while (result.moveToNext());
         }
         result.close();
         this.close();
@@ -292,10 +292,10 @@ public class bd_manager  {
         this.close();
     }
 
-    public void data_update(String ci, int edad, int patologia, double calzado, double cintura_tobillo,
+    public void data_update(String ci, String fecha, int edad, int patologia, double calzado, double cintura_tobillo,
                             double largo_pierna, double altura_sensor, String obsercion){
-        int id = person_getID(ci);
-        String whereClause = id_person + " = ?";
+        int id = data_getID(ci,fecha);
+        String whereClause = data_id + " = ?";
         String [] whereArgs = new String[]{String.valueOf(id)};
         ContentValues values = new ContentValues();
 
@@ -313,10 +313,10 @@ public class bd_manager  {
         this.close();
     }
 
-    public void data_delete(String ci){
+    public void data_delete(String ci, String fecha){
         int colmdelete= 0;
-        String whereClause = id_person + " = ?";
-        int id = person_getID(ci);
+        String whereClause = data_id + " = ?";
+        int id = data_getID(ci,fecha);
         String [] whereArgs = new String[]{String.valueOf(id)};
         this.open_to_write();
         colmdelete = database.delete(Table_data_person,whereClause,whereArgs);
@@ -326,37 +326,61 @@ public class bd_manager  {
     public void data_deleteAll(){
         int colmdelete= 0;
         this.open_to_write();
-        colmdelete = database.delete(Table_person,String.valueOf(1),null);
+        colmdelete = database.delete(Table_data_person,String.valueOf(1),null);
         this.close();
     }
 
     public ArrayList<String> data_list() {
         ArrayList<String> list = new ArrayList<String>();
-        int name = -1;
-        int ci = -1;
-        int sexo = -1;
-        int telef = -1;
+        int person = -1;
+        int date = -1;
+        int hour = -1;
+        int ege = -1;
+        int patologia = -1;
+        int shoes = -1;
+        int medicion = -1;
+        int leg = -1;
+        int height = -1;
+        int observation = -1;
         int cant = -1;
 
         this.open_to_read();
-        Cursor result = database.rawQuery("Select * FROM participante" , null);
+        Cursor result = database.rawQuery("Select * FROM datoparticipante" , null);
         if (result != null && result.getCount() >0 ) {
             result.moveToFirst();
+            person = result.getColumnIndex(id_person);
+            date = result.getColumnIndex(data_date);
+            hour = result.getColumnIndex(data_hour);
+            ege = result.getColumnIndex(data_age);
+            patologia = result.getColumnIndex(data_patologia);
+            shoes = result.getColumnIndex(data_shoes);
+            medicion = result.getColumnIndex(data_medicion);
+            leg = result.getColumnIndex(data_long_leg);
+            height = result.getColumnIndex(data_height);
+            observation = result.getColumnIndex(data_observation);
             try {
                 do {
-                    name = result.getColumnIndex(Person_name);
-                    ci = result.getColumnIndex(Person_ci);
-                    sexo = result.getColumnIndex(Person_sex);
-                    telef = result.getColumnIndex(Person_phone);
+                    int persona = result.getInt(person);
+                    String fecha = result.getString(date);
+                    String hora = result.getString(hour);
+                    int edad = result.getInt(ege);
+                    int patol = result.getInt(patologia);
+                    double calzado = result.getDouble(shoes);
+                    double cintura_tobillo = result.getDouble(medicion);
+                    double pierna = result.getDouble(leg);
+                    double altura = result.getDouble(height);
+                    String observ = result.getString(observation);
 
-                    String p_nombre = result.getString(name);
-                    String p_ci = result.getString(ci);
-                    String p_sexo = result.getString(sexo);
-                    String p_telef = result.getString(telef);
-                    list.add(p_nombre);
-                    list.add(p_ci);
-                    list.add(p_sexo);
-                    list.add(p_telef);
+                    list.add(String.valueOf(persona));
+                    list.add(fecha);
+                    list.add(hora);
+                    list.add(String.valueOf(edad));
+                    list.add(String.valueOf(patol));
+                    list.add(String.valueOf(calzado));
+                    list.add(String.valueOf(cintura_tobillo));
+                    list.add(String.valueOf(pierna));
+                    list.add(String.valueOf(altura));
+                    list.add(observ);
                 } while (result.moveToNext());
 
             } finally {
@@ -367,15 +391,17 @@ public class bd_manager  {
         return list;
     }
 
-    public int data_getID(String ci){
+    public int data_getID(String ci, String date){
         int id=-1;
+        int id_part= person_getID(ci);
+       // String [] whereArgs = new String[]{String.valueOf(id_part), fecha};
+
         this.open_to_read();
-        String [] whereArgs = new String[]{ci};
-        Cursor result = database.rawQuery("Select id from  participante where ci = " + '"' + ci + '"',null);
+        Cursor result = database.rawQuery("Select id from datoparticipante where idparticipante = " + id_part + " and  fecha = " + '"'+date + '"',null);
 
         if(result.moveToFirst()){
             do {
-                int col= result.getColumnIndex(User_id);
+                int col= result.getColumnIndex(data_id);
                 id = result.getInt(col);
             } while (result.moveToNext());
         }
@@ -395,9 +421,8 @@ public class bd_manager  {
         return dateFormat.format(date);
     }
 
-    /*public int getData(String ci, String fecha){
 
-    }*/
+
    /* -----------------------------------------------------------------------
 ---------------------------------------------------------------------------
    CRUD de señales
