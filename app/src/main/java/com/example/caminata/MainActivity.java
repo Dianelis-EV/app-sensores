@@ -23,13 +23,8 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
        bd_manager manager = new bd_manager(MainActivity.this);
        //prueba
-        //manager.person_deleteAll();
-        manager.data_deleteAll();
-        //manager.person_insert("Dianelis", "01090168017","Femenino", "72802153");
-        manager.data_insert("01090168017",22,0,36.5,54.03,45.32,5.25,"Problemas en la rodilla");
-        manager.data_update("01090168017",manager.getDate(),23,0,36.5,54.03,45.32,5.25,"Problemas en la rodilla");
-        ArrayList<String> list = manager.data_list();
-        manager.data_delete("01090168017", list.get(1));
+        manager.person_deleteAll();
+
 
     }
 

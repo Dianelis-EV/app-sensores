@@ -44,6 +44,21 @@ public class bd_manager  {
     private static final String data_height = "alturadelsensor";
     private static final String data_observation = "observacion";
 
+    //Tabla señales
+    private static final String Table_sennal = "sennal";
+    private static final String sennal_id = "id";
+    private static final String sennal_participante = "idparticipante";
+    private static final String sennal_acelX = "acelerometroX";
+    private static final String sennal_acelY = "acelerometroY";
+    private static final String sennal_acelZ = "acelerometroZ";
+    private static final String sennal_girosX = "giroscopioX";
+    private static final String sennal_girosY = "giroscopioY";
+    private static final String sennal_girosZ = "giroscopioZ";
+    private static final String sennal_magneX = "magnetometroX";
+    private static final String sennal_magneY = "magnetometroY";
+    private static final String sennal_magneZ = "magnetometroZ";
+    private static final String sennal_temp = "temperatura";
+
 
 
     //conexión
@@ -429,6 +444,30 @@ public class bd_manager  {
     -----------------------------------------------------------------------
  --------------------------------------------------------------------------
     */
+   public void sennal_insert(String ci, double acelx, double acely,double acelz,double girosx, double girosy, double girosz,
+                             double magnex,double magney, double magnez,double tempe){
+       ContentValues values = new ContentValues();
+       values.put(sennal_participante, person_getID(ci));
+       values.put(sennal_acelX,acelx);
+       values.put(sennal_acelY,acely);
+       values.put(sennal_acelZ,acelz);
+       values.put(sennal_girosX,girosx);
+       values.put(sennal_girosY,girosy);
+       values.put(sennal_girosZ,girosz);
+       values.put(sennal_magneX,magnex);
+       values.put(sennal_magneY,magney);
+       values.put(sennal_magneZ,magnez);
+       values.put(sennal_temp,tempe);
+       this.open_to_write();
+       database.insert(Table_sennal,null,values);
+       this.close();
+   }
+    public void sennal_deleteAll(){
+        int colmdelete= 0;
+        this.open_to_write();
+        colmdelete = database.delete(Table_sennal,String.valueOf(1),null);
+        this.close();
+    }
 
 
 }
