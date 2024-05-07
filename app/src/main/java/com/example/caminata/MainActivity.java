@@ -2,9 +2,11 @@ package com.example.caminata;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteException;
 import android.os.Bundle;
+import android.os.Handler;
 import android.util.Log;
 
 
@@ -21,9 +23,19 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-       bd_manager manager = new bd_manager(MainActivity.this);
+      // bd_manager manager = new bd_manager(MainActivity.this);
        //prueba
-        manager.person_deleteAll();
+      //  manager.person_deleteAll();
+        new Handler().postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                // Aquí puedes iniciar una nueva actividad o realizar otra acción
+                // Por ejemplo, iniciar una nueva actividad llamada 'NuevaActividad'
+                Intent intent = new Intent(MainActivity.this, LoginActivity.class);
+                startActivity(intent);
+                finish(); // Finaliza la MainActivity actual
+            }
+        }, 5000);
 
 
     }
