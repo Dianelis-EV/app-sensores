@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="Bienvenido"> 30sp</dimen>
+    <dimen name="nombreUsuario">18sp</dimen>
+    <dimen name="contrasenna">18sp</dimen>
+    <dimen name="login">15sp</dimen>
+</resources>
