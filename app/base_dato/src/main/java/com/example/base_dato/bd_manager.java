@@ -21,6 +21,7 @@ public class bd_manager  {
     private static final String User_id="id";
     private static final String User_name="nombre";
     private static final String User_password= "contrasenna";
+    private static final String User_passwordRepit= "repetircontrasenna";
 
    ///Tabla participante
     private static final String Table_person = "participante";
@@ -87,11 +88,12 @@ public class bd_manager  {
     -----------------------------------------------------------------------
  --------------------------------------------------------------------------
     */
-    public void user_insert(String nombre, String pass){
+    public void user_insert(String nombre, String pass, String repitpass){
         ContentValues values = new ContentValues();
         this.open_to_write();
         values.put(User_name, nombre);
         values.put(User_password,pass);
+        values.put(User_passwordRepit,repitpass);
         database.insert(Table_user,null,values);
         this.close();
     }
@@ -100,6 +102,7 @@ public class bd_manager  {
         ArrayList<String> list = new ArrayList<String>();
         int name = -1;
         int pass = -1;
+        int repitpass = -1;
         int cant = -1;
 
         this.open_to_read();
@@ -110,10 +113,13 @@ public class bd_manager  {
                 do {
                     name = result.getColumnIndex(User_name);
                     pass = result.getColumnIndex(User_password);
+                    repitpass= result.getColumnIndex(User_passwordRepit);
                     String nombre = result.getString(name);
                     String passw = result.getString(pass);
+                    String repitpassw = result.getString(repitpass);
                     list.add(nombre);
                     list.add(passw);
+                    list.add(repitpassw);
                 } while (result.moveToNext());
 
             } finally {
@@ -267,7 +273,6 @@ public class bd_manager  {
     public int person_getID(String ci_person){
         int id=-1;
         this.open_to_read();
-        String [] whereArgs = new String[]{ci_person};
         Cursor result = database.rawQuery("Select id from  participante where ci =   "  + '"' +ci_person + '"',null);
 
         if(result.moveToFirst()){
@@ -275,6 +280,23 @@ public class bd_manager  {
                 int col= result.getColumnIndex(Person_id);
                 id = result.getInt(col);
            // } while (result.moveToNext());
+        }
+        result.close();
+        this.close();
+
+        return id;
+    }
+
+    public int getsexId(String sexo ){
+        int  id = -1;
+        this.open_to_read();
+        Cursor result = database.rawQuery("Select id from sexo where nombre = " + '"' + sexo + '"',null);
+
+        if(result.moveToFirst()){
+            // do {
+            int col= result.getColumnIndex("id");
+            id = result.getInt(col);
+            // } while (result.moveToNext());
         }
         result.close();
         this.close();

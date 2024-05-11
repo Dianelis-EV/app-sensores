@@ -4,4 +4,6 @@
     <dimen name="nombreUsuario">30sp</dimen>
     <dimen name="contrasenna">30sp</dimen>
     <dimen name="login">20sp</dimen>
+    <dimen name="nueva_cuenta">20sp</dimen>
+    <dimen name="create_newaccount">69sp</dimen>
 </resources>

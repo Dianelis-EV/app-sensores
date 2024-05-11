@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".createAcount">
+
+    <ImageView
+        android:id="@+id/imageView22"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="160dp"
+        android:layout_marginBottom="384dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:srcCompat="@drawable/mancha_rosa_cuadado" />
+
+    <TextView
+        android:id="@+id/textView5"
+        android:layout_width="274dp"
+        android:layout_height="182dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="73dp"
+        android:layout_marginEnd="121dp"
+        android:layout_marginBottom="636dp"
+        android:text="Crear nueva cuenta"
+        android:textSize="@dimen/create_newaccount"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/imageView8"
+        android:layout_width="70dp"
+        android:layout_height="66dp"
+        android:layout_marginStart="33dp"
+        android:layout_marginTop="24dp"
+        android:layout_marginEnd="308dp"
+        android:layout_weight="1"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView5"
+        app:srcCompat="@drawable/nombre_usuario" />
+
+    <EditText
+        android:id="@+id/newaccountUser"
+        android:layout_width="252dp"
+        android:layout_height="67dp"
+        android:layout_marginTop="24dp"
+        android:layout_marginEnd="47dp"
+        android:background="@drawable/edittext_backgraund"
+        android:ems="10"
+        android:hint="Nombre de usuario"
+        android:inputType="text"
+        android:padding="5dp"
+        android:textColor="#707070"
+        android:textSize="@dimen/nombreUsuario"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/imageView8"
+        app:layout_constraintTop_toBottomOf="@+id/textView5" />
+
+    <ImageView
+        android:id="@+id/imageView10"
+        android:layout_width="70dp"
+        android:layout_height="66dp"
+        android:layout_marginStart="33dp"
+        android:layout_marginTop="24dp"
+        android:layout_marginEnd="308dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView8"
+        app:srcCompat="@drawable/contrese_a" />
+
+    <EditText
+        android:id="@+id/newaccountpassword"
+        android:layout_width="252dp"
+        android:layout_height="67dp"
+        android:layout_marginTop="24dp"
+        android:layout_marginEnd="47dp"
+        android:background="@drawable/edittext_backgraund"
+        android:ems="10"
+        android:hint="Contraseña"
+        android:inputType="textPassword"
+        android:padding="5dp"
+        android:textColor="#707070"
+        android:textSize="@dimen/contrasenna"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toEndOf="@+id/imageView10"
+        app:layout_constraintTop_toBottomOf="@+id/newaccountUser" />
+
+    <ImageView
+        android:id="@+id/imageView18"
+        android:layout_width="70dp"
+        android:layout_height="66dp"
+        android:layout_marginStart="33dp"
+        android:layout_marginTop="24dp"
+        android:layout_marginEnd="308dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView10"
+        app:srcCompat="@drawable/contrese_a" />
+
+    <EditText
+        android:id="@+id/repetircontrasenna"
+        android:layout_width="252dp"
+        android:layout_height="67dp"
+        android:layout_marginTop="24dp"
+        android:layout_marginEnd="56dp"
+        android:background="@drawable/edittext_backgraund"
+        android:ems="10"
+        android:hint="Contraseña"
+        android:inputType="textPassword"
+        android:padding="5dp"
+        android:textColor="#707070"
+        android:textSize="@dimen/contrasenna"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/imageView18"
+        app:layout_constraintTop_toBottomOf="@+id/newaccountpassword" />
+
+    <Button
+        android:id="@+id/buttonsigin"
+        android:layout_width="184dp"
+        android:layout_height="41dp"
+        android:layout_marginStart="91dp"
+        android:layout_marginTop="72dp"
+        android:layout_marginEnd="136dp"
+        android:background="@drawable/button_background"
+        android:text="Registrarse"
+        android:textSize="@dimen/login"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/repetircontrasenna" />
+
+    <ImageView
+        android:id="@+id/imageView23"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="103dp"
+        android:layout_marginTop="274dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0"
+        app:srcCompat="@drawable/chica_caminando" />
+
+    <ImageView
+        android:id="@+id/imageView24"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="417dp"
+        android:layout_marginEnd="146dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0"
+        app:srcCompat="@drawable/mancha_blue" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

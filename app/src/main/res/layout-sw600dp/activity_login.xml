@@ -62,7 +62,7 @@
         app:srcCompat="@drawable/nombre_usuario" />
 
     <EditText
-        android:id="@+id/loginNombreUsuario"
+        android:id="@+id/accountUser"
         android:layout_width="351dp"
         android:layout_height="85dp"
         android:layout_marginStart="194dp"
@@ -96,7 +96,7 @@
         app:srcCompat="@drawable/contrese_a" />
 
     <EditText
-        android:id="@+id/loginPassword"
+        android:id="@+id/accountpassword"
         android:layout_width="351dp"
         android:layout_height="85dp"
         android:layout_marginStart="194dp"
@@ -131,7 +131,7 @@
         android:textSize="@dimen/login"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/loginPassword" />
+        app:layout_constraintTop_toBottomOf="@+id/accountpassword" />
 
     <ImageView
         android:id="@+id/imageView7"
@@ -146,6 +146,19 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.0"
         app:srcCompat="@drawable/mancha_blue" />
+
+    <TextView
+        android:id="@+id/crearCuenta"
+        android:layout_width="362dp"
+        android:layout_height="43dp"
+        android:layout_marginStart="272dp"
+        android:layout_marginTop="48dp"
+        android:text="¿Desea crear una nueva cuenta?"
+        android:textSize="@dimen/nueva_cuenta"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/buttonLogin" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
