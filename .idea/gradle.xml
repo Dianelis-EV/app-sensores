@@ -13,6 +13,7 @@
             <option value="$PROJECT_DIR$" />
             <option value="$PROJECT_DIR$/app" />
             <option value="$PROJECT_DIR$/app/base_dato" />
+            <option value="$PROJECT_DIR$/app/getSensor" />
           </set>
         </option>
       </GradleProjectSettings>
