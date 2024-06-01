@@ -15,7 +15,7 @@ public class bd_manager  {
 
     private bd_connection connection;
     private SQLiteDatabase database;
-    private final Context mycontext;
+    private Context mycontext;
     /// Tabla usuario
     private static final String Table_user="usuario";
     private static final String User_id="id";
@@ -65,9 +65,12 @@ public class bd_manager  {
     //conexión
     public bd_manager(Context context) {
         connection = new bd_connection(context);
-        connection.open();
+        if(connection.checkdatabase()== false){
+            connection.open();
+        }
         mycontext = context;
     }
+
 
     public bd_manager open_to_write() throws SQLException {
         database = connection.getWritableDatabase();
@@ -168,7 +171,7 @@ public class bd_manager  {
     }
 
     public int user_getID(String name){
-        int id=-1;
+        int id=0;
         this.open_to_read();
         String [] whereArgs = new String[]{name};
         Cursor result = database.rawQuery("Select id from usuario where nombre = " + '"' +name + '"',null);
@@ -183,6 +186,22 @@ public class bd_manager  {
         this.close();
         return id;
     }
+
+    public String user_getpassword(String name){
+        String password=null;
+        int userId = user_getID(name);
+        this.open_to_read();
+        Cursor result = database.rawQuery("Select contrasenna from usuario where id = " + userId,null);
+        if (result.moveToFirst()){
+            int col = result.getColumnIndex(User_password);
+            password = result.getString(col);
+        }while(result.moveToNext());
+        result.close();
+        this.close();
+        return password;
+    }
+
+
 /* -----------------------------------------------------------------------
 ---------------------------------------------------------------------------
     CRUD de participante
@@ -490,6 +509,7 @@ public class bd_manager  {
         colmdelete = database.delete(Table_sennal,String.valueOf(1),null);
         this.close();
     }
+
 
 
 }

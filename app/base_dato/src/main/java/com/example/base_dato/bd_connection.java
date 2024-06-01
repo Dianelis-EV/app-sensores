@@ -39,7 +39,7 @@ public class bd_connection extends SQLiteOpenHelper {
             }
         }
     }
-    private boolean checkdatabase(){
+    public boolean checkdatabase(){
         SQLiteDatabase checkDB= null;
         try{
             String path= bd_path + BD_NAME;
