@@ -28,7 +28,7 @@ public class BluetoothImplement implements IBluetooth {
     private static final UUID uuid = UUID.fromString("0000111e-0000-1000-8000-00805f9b34fb");
 
     @Override
-    public void coneexion() {
+    public void conexion() {
         BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
         if (bluetoothAdapter.isEnabled()){
             @SuppressLint("MissingPermission") Set<BluetoothDevice> devices = bluetoothAdapter.getBondedDevices();
