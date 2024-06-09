@@ -1,4 +1,4 @@
-package com.example.base_dato;
+package com.example.database;
 
 import android.content.ContentValues;
 import android.content.Context;
@@ -11,9 +11,8 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.Locale;
 
-public class bd_manager  {
-
-    private bd_connection connection;
+public class db_manager {
+    private db_connection connection;
     private SQLiteDatabase database;
     private final Context mycontext;
     /// Tabla usuario
@@ -23,7 +22,7 @@ public class bd_manager  {
     private static final String User_password= "contrasenna";
     private static final String User_passwordRepit= "repetircontrasenna";
 
-   ///Tabla participante
+    ///Tabla participante
     private static final String Table_person = "participante";
     private static final String Person_id = "id";
     private static final String Person_name = "nombre";
@@ -63,17 +62,17 @@ public class bd_manager  {
 
 
     //conexión
-    public bd_manager(Context context) {
-        connection = new bd_connection(context);
+    public db_manager(Context context) {
+        connection = new db_connection(context);
         connection.open();
         mycontext = context;
     }
 
-    public bd_manager open_to_write() throws SQLException {
+    public db_manager open_to_write() throws SQLException {
         database = connection.getWritableDatabase();
         return this;
     }
-    public bd_manager open_to_read() throws SQLException {
+    public db_manager open_to_read() throws SQLException {
         database = connection.getReadableDatabase();
         return this;
     }
@@ -183,31 +182,12 @@ public class bd_manager  {
         this.close();
         return id;
     }
-
-    public String getpassword(String name){
-        int id= user_getID(name);
-        String pass = null;
-        this.open_to_read();
-        Cursor result = database.rawQuery("Select contrasenna from usuario where id = " + '"' + id + '"',null);
-
-        if(result.moveToFirst()){
-            do {
-                int col= result.getColumnIndex(User_password);
-                pass = result.getString(col);
-            } while (result.moveToNext());
-        }
-        result.close();
-        this.close();
-        return pass;
-    }
-
-
-/* -----------------------------------------------------------------------
----------------------------------------------------------------------------
-    CRUD de participante
-    -----------------------------------------------------------------------
- --------------------------------------------------------------------------
-    */
+    /* -----------------------------------------------------------------------
+    ---------------------------------------------------------------------------
+        CRUD de participante
+        -----------------------------------------------------------------------
+     --------------------------------------------------------------------------
+        */
     public void person_insert(String nombre, String ci,String sexo, String telefono){
         ContentValues values = new ContentValues();
         this.open_to_write();
@@ -225,14 +205,14 @@ public class bd_manager  {
         String [] whereArgs = new String[]{String.valueOf(id)};
         ContentValues values = new ContentValues();
 
-            values.put(Person_name, nombre);
-            values.put(Person_ci,ci);
-            values.put(Person_sex, sexo);
-            values.put(Person_phone,telefono);
+        values.put(Person_name, nombre);
+        values.put(Person_ci,ci);
+        values.put(Person_sex, sexo);
+        values.put(Person_phone,telefono);
 
         this.open_to_write();
-         database.update(Table_person,values,whereClause,whereArgs);
-         this.close();
+        database.update(Table_person,values,whereClause,whereArgs);
+        this.close();
     }
 
     public void person_delete(String ci){
@@ -295,10 +275,10 @@ public class bd_manager  {
         Cursor result = database.rawQuery("Select id from  participante where ci =   "  + '"' +ci_person + '"',null);
 
         if(result.moveToFirst()){
-           // do {
-                int col= result.getColumnIndex(Person_id);
-                id = result.getInt(col);
-           // } while (result.moveToNext());
+            // do {
+            int col= result.getColumnIndex(Person_id);
+            id = result.getInt(col);
+            // } while (result.moveToNext());
         }
         result.close();
         this.close();
@@ -330,7 +310,7 @@ public class bd_manager  {
  --------------------------------------------------------------------------
     */
 
-   public void data_insert(String ci, int edad, int patologia, double calzado, double cintura_tobillo,
+    public void data_insert(String ci, int edad, int patologia, double calzado, double cintura_tobillo,
                             double largo_pierna, double altura_sensor, String obsercion){
         ContentValues values = new ContentValues();
         values.put(id_person, person_getID(ci));
@@ -450,7 +430,7 @@ public class bd_manager  {
     public int data_getID(String ci, String date){
         int id=-1;
         int id_part= person_getID(ci);
-       // String [] whereArgs = new String[]{String.valueOf(id_part), fecha};
+        // String [] whereArgs = new String[]{String.valueOf(id_part), fecha};
 
         this.open_to_read();
         Cursor result = database.rawQuery("Select id from datoparticipante where idparticipante = " + id_part + " and  fecha = " + '"'+date + '"',null);
@@ -469,7 +449,7 @@ public class bd_manager  {
     public String getDate(){
         SimpleDateFormat dateFormat= new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault());
         Date date = new Date();
-       return dateFormat.format(date);
+        return dateFormat.format(date);
     }
     public String gethour(){
         SimpleDateFormat dateFormat= new SimpleDateFormat("hh:mm", Locale.getDefault());
@@ -479,38 +459,34 @@ public class bd_manager  {
 
 
 
-   /* -----------------------------------------------------------------------
----------------------------------------------------------------------------
-   CRUD de señales
-    -----------------------------------------------------------------------
- --------------------------------------------------------------------------
-    */
-   public void sennal_insert(String ci, double acelx, double acely,double acelz,double girosx, double girosy, double girosz,
-                             double magnex,double magney, double magnez,double tempe){
-       ContentValues values = new ContentValues();
-       values.put(sennal_participante, person_getID(ci));
-       values.put(sennal_acelX,acelx);
-       values.put(sennal_acelY,acely);
-       values.put(sennal_acelZ,acelz);
-       values.put(sennal_girosX,girosx);
-       values.put(sennal_girosY,girosy);
-       values.put(sennal_girosZ,girosz);
-       values.put(sennal_magneX,magnex);
-       values.put(sennal_magneY,magney);
-       values.put(sennal_magneZ,magnez);
-       values.put(sennal_temp,tempe);
-       this.open_to_write();
-       database.insert(Table_sennal,null,values);
-       this.close();
-   }
+    /* -----------------------------------------------------------------------
+ ---------------------------------------------------------------------------
+    CRUD de señales
+     -----------------------------------------------------------------------
+  --------------------------------------------------------------------------
+     */
+    public void sennal_insert(String ci, double acelx, double acely,double acelz,double girosx, double girosy, double girosz,
+                              double magnex,double magney, double magnez,double tempe){
+        ContentValues values = new ContentValues();
+        values.put(sennal_participante, person_getID(ci));
+        values.put(sennal_acelX,acelx);
+        values.put(sennal_acelY,acely);
+        values.put(sennal_acelZ,acelz);
+        values.put(sennal_girosX,girosx);
+        values.put(sennal_girosY,girosy);
+        values.put(sennal_girosZ,girosz);
+        values.put(sennal_magneX,magnex);
+        values.put(sennal_magneY,magney);
+        values.put(sennal_magneZ,magnez);
+        values.put(sennal_temp,tempe);
+        this.open_to_write();
+        database.insert(Table_sennal,null,values);
+        this.close();
+    }
     public void sennal_deleteAll(){
         int colmdelete= 0;
         this.open_to_write();
         colmdelete = database.delete(Table_sennal,String.valueOf(1),null);
         this.close();
     }
-
-
 }
-
-
