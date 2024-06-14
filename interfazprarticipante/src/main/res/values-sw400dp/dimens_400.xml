@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <dimen name="textBienbenida"> 42sp</dimen>
-    <dimen name="textNombreCompleto">18sp</dimen>
-    <dimen name="textCI">18sp</dimen>
-    <dimen name="textSexo">18sp</dimen>
-    <dimen name="textTelefono">18sp</dimen>
-    <dimen name="login">15sp</dimen>
+    <dimen name="textNombreCompleto">20sp</dimen>
+    <dimen name="textCI">20sp</dimen>
+    <dimen name="textSexo">20sp</dimen>
+    <dimen name="textTelefono">20sp</dimen>
+    <dimen name="buttonGuardar">20sp</dimen>
 </resources>

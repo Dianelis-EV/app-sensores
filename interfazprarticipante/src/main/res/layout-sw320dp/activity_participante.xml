@@ -160,7 +160,7 @@
         </LinearLayout>
     </ScrollView>
 
-    <Button
+    <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/buttonGuardar"
         android:layout_width="144dp"
         android:layout_height="50dp"
@@ -168,6 +168,7 @@
         android:layout_marginTop="553dp"
         android:layout_marginEnd="26dp"
         android:layout_marginBottom="37dp"
+        android:background="@drawable/button_background"
         android:text="@string/buttonGuardar"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

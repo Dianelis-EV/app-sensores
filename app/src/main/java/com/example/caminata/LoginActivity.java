@@ -18,6 +18,7 @@ import android.widget.Toast;
 import com.example.basedatos.bd_manager;
 //import com.example.base_dato.bd_manager;
 import com.example.caminata.service.Encriptacion;
+import com.example.interfazprincipal.ParticipanteActivity;
 
 public class LoginActivity extends AppCompatActivity {
     private static String PREFS_KEY = "miscredenciales";
@@ -58,7 +59,7 @@ public class LoginActivity extends AppCompatActivity {
                         if(manager.getpassword(name).equals(Encriptacion.getencriptacion(password))){
                             guardarValor(LoginActivity.this, "user", name);
                             guardarValor(LoginActivity.this, "password", Encriptacion.getencriptacion(password));
-                            Intent intent = new Intent(LoginActivity.this, PrincipalActivity.class);
+                            Intent intent = new Intent(LoginActivity.this, ParticipanteActivity.class);
                             startActivity(intent);
                         }else{
                             Toast.makeText(LoginActivity.this,"Nombre de usuario o contraseña incorrectos", Toast.LENGTH_LONG)

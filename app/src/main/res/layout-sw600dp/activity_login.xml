@@ -117,7 +117,7 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.0" />
 
-    <Button
+    <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/buttonLogin"
         android:layout_width="320dp"
         android:layout_height="59dp"
@@ -125,7 +125,6 @@
         android:layout_marginTop="32dp"
         android:layout_marginEnd="114dp"
         android:background="@drawable/button_background"
-        android:backgroundTint="#9AD0D3"
         android:backgroundTintMode="add"
         android:text="Login"
         android:textSize="@dimen/login"

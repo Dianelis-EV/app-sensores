@@ -49,15 +49,15 @@ public class ParticipanteActivity extends AppCompatActivity {
         RadioButton masculino = (RadioButton) findViewById(R.id.radioButtonMasculino);
         //Guardar en la base de datos
         if(!nombre.getText().toString().equals("") && ci_iscorrect(ci.getText().toString())){
-            if(id_baseDatos()!=-1){
+            if(id_baseDatos()==-1){
                 if(telefono_iscorrect(telefono.getText().toString())){
                     if(femenino.isChecked()){
                         bd_manager manager = new bd_manager(ParticipanteActivity.this);
-                        manager.person_insert(nombre.getText().toString(),ci.getText().toString(),
+                        manager.person_insert_prueba(nombre.getText().toString(),ci.getText().toString(),
                                 femenino.getText().toString(), telefono.getText().toString());
                     }else if(masculino.isChecked()){
                         bd_manager manager = new bd_manager(ParticipanteActivity.this);
-                        manager.person_insert(nombre.getText().toString(),ci.getText().toString(),
+                        manager.person_insert_prueba(nombre.getText().toString(),ci.getText().toString(),
                                 femenino.getText().toString(), telefono.getText().toString());
                     }else{
                         Toast.makeText(this, "Por favor seleccione un sexo", Toast.LENGTH_LONG).show();

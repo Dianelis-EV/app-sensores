@@ -27,6 +27,7 @@ public class bd_manager  {
    ///Tabla participante
     private static final String Table_person = "participante";
     private static final String Person_id = "id";
+    private static final String PersonUser_id ="id_usuario";
     private static final String Person_name = "nombre";
     private static final String Person_ci = "ci";
     private static final String Person_sex = "sexo";
@@ -210,10 +211,29 @@ public class bd_manager  {
     -----------------------------------------------------------------------
  --------------------------------------------------------------------------
     */
-    public void person_insert(String nombre, String ci,String sexo, String telefono){
+    public void person_insert(String usuario,String nombre, String ci,String sexo, String telefono){
         ContentValues values = new ContentValues();
+        int id_user = user_getID(usuario);
         this.open_to_write();
         if(database.isOpen()){
+            values.put(PersonUser_id, nombre);
+            values.put(Person_name, nombre);
+            values.put(Person_ci,ci);
+            values.put(Person_sex,sexo);
+            values.put(Person_phone,telefono);
+            database.insert(Table_person,null,values);
+        }
+        this.close();
+
+
+    }
+
+    public void person_insert_prueba(String nombre, String ci,String sexo, String telefono){
+        ContentValues values = new ContentValues();
+        int id_user = user_getID("Rayner");
+        this.open_to_write();
+        if(database.isOpen()){
+            values.put("id_usuario", nombre);
             values.put(Person_name, nombre);
             values.put(Person_ci,ci);
             values.put(Person_sex,sexo);
