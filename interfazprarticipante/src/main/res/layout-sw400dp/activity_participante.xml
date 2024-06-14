@@ -1,0 +1,171 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <ImageView
+        android:id="@+id/imageManchaRosa"
+        android:layout_width="397dp"
+        android:layout_height="436dp"
+        android:layout_marginStart="110dp"
+        android:layout_marginBottom="644dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1.0"
+        app:srcCompat="@drawable/mancha_rosa_cuadado" />
+
+    <ImageView
+        android:id="@+id/imageManchaAzul"
+        android:layout_width="342dp"
+        android:layout_height="561dp"
+        android:layout_marginTop="559dp"
+        android:layout_marginEnd="191dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0"
+        app:srcCompat="@drawable/mancha_blue" />
+
+    <TextView
+        android:id="@+id/textBienbenida"
+        android:layout_width="203dp"
+        android:layout_height="153dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="192dp"
+        android:layout_marginBottom="722dp"
+        android:text="Ingrese sus datos"
+        android:textSize="@dimen/textBienbenida"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ScrollView
+        android:layout_width="360dp"
+        android:layout_height="524dp"
+        android:layout_marginStart="22dp"
+        android:layout_marginEnd="23dp"
+        android:fillViewport="true"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textBienbenida">>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/textNombreCompleto"
+                android:layout_width="wrap_content"
+                android:layout_height="38dp"
+                android:text="@string/textNombre"
+                android:textSize="@dimen/textNombreCompleto"
+                android:textStyle="bold" />
+
+            <EditText
+                android:id="@+id/editTextNombre"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:hint="@string/textNombre"
+                android:inputType="text" />
+
+            <TextView
+                android:id="@+id/textCI"
+                android:layout_width="wrap_content"
+                android:layout_height="37dp"
+                android:text="@string/textCI"
+                android:textSize="@dimen/textCI"
+                android:textStyle="bold" />
+
+            <EditText
+                android:id="@+id/editTextCI"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:hint="@string/ejemploCI"
+                android:inputType="text" />
+
+            <TextView
+                android:id="@+id/textView5"
+                android:layout_width="wrap_content"
+                android:layout_height="37dp"
+                android:text="@string/textSexo"
+                android:textSize="@dimen/textSexo"
+                android:textStyle="bold" />
+
+            <RadioGroup
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="37dp">
+
+                    <RadioButton
+                        android:id="@+id/radioButtonfemenino"
+                        android:layout_width="wrap_content"
+                        android:layout_height="37dp"
+                        android:layout_marginEnd="199dp"
+                        android:focusable="auto"
+                        android:text="@string/femenino"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <RadioButton
+                        android:id="@+id/radioButtonMasculino"
+                        android:layout_width="wrap_content"
+                        android:layout_height="37dp"
+                        android:layout_marginStart="154dp"
+                        android:layout_marginEnd="30dp"
+                        android:text="@string/masculino"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.0"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintVertical_bias="0.0" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+            </RadioGroup>
+
+            <TextView
+                android:id="@+id/textTelefono"
+                android:layout_width="wrap_content"
+                android:layout_height="37dp"
+                android:text="@string/textTelefono"
+                android:textSize="@dimen/textTelefono"
+                android:textStyle="bold" />
+
+            <EditText
+                android:id="@+id/editTextTelefono"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:hint="@string/ejemploTelefono"
+                android:inputType="phone" />
+
+        </LinearLayout>
+    </ScrollView>
+
+    <Button
+        android:id="@+id/buttonGuardar"
+        android:layout_width="202dp"
+        android:layout_height="72dp"
+        android:text="@string/buttonGuardar"
+        tools:layout_editor_absoluteX="183dp"
+        tools:layout_editor_absoluteY="727dp" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

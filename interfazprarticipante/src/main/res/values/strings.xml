@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">InterfazPrincipal</string>
+    <string name="textCI">Carnet de identidad</string>
+    <string name="textSexo">Sexo</string>
+    <string name="textTelefono">Numero de teléfono</string>
+    <string name="ejemploTelefono">XXXX-XX-XX</string>
+    <string name="textNombre">Nombre Completo</string>
+    <string name="ejemploCI">XXXXXXXXXXX</string>
+    <string name="femenino">Femenino</string>
+    <string name="masculino">Masculino</string>
+    <string name="buttonGuardar">Guardar</string>
+</resources>

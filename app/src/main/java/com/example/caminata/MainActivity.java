@@ -8,11 +8,10 @@ import android.database.sqlite.SQLiteException;
 import android.os.Bundle;
 import android.os.Handler;
 import android.util.Log;
+import android.widget.Toast;
 
-
-import com.example.base_dato.bd_connection;
-import com.example.base_dato.bd_manager;
-import com.example.caminata.service.Encriptacion;
+import com.example.basedatos.bd_manager;
+import com.example.interfazprincipal.ParticipanteActivity;
 
 import java.lang.reflect.Array;
 import java.util.ArrayList;
@@ -26,6 +25,8 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
          //prueba
       //  manager.person_deleteAll();
+
+
        new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
@@ -35,14 +36,20 @@ public class MainActivity extends AppCompatActivity {
                 String pass = LoginActivity.leerValor(MainActivity.this, "password");
 
                 if(!user.equals("") && !pass.equals("")){
-                    Intent intent = new Intent(MainActivity.this, PrincipalActivity.class);
-                    startActivity(intent);
-                    finish();
+                    try{
+                        Intent intent = new Intent(MainActivity.this, ParticipanteActivity.class);
+                        startActivity(intent);
+                        finish();
+                    }catch (Exception e){
+                        Toast.makeText(MainActivity.this, e.getMessage(), Toast.LENGTH_SHORT).show();
+                    }
+
                 }else{
                     Intent intent = new Intent(MainActivity.this, LoginActivity.class);
                     startActivity(intent);
                     finish(); // Finaliza la MainActivity actual
                 }
+
 
             }
         }, 5000);

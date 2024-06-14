@@ -14,7 +14,9 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.base_dato.bd_manager;
+//import com.example.base_dato.bd_manager;
+import com.example.basedatos.bd_manager;
+//import com.example.base_dato.bd_manager;
 import com.example.caminata.service.Encriptacion;
 
 public class LoginActivity extends AppCompatActivity {
@@ -51,7 +53,7 @@ public class LoginActivity extends AppCompatActivity {
                 if(!newName.getText().toString().equals("") && !newpass.getText().toString().equals("")) {
                     String name = (String) newName.getText().toString();
                     String password = (String) newpass.getText().toString();
-                    bd_manager  manager = new bd_manager(LoginActivity.this);
+                    bd_manager manager = new bd_manager(LoginActivity.this);
                     try{
                         if(manager.getpassword(name).equals(Encriptacion.getencriptacion(password))){
                             guardarValor(LoginActivity.this, "user", name);

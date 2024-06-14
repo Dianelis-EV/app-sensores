@@ -9,7 +9,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import com.example.base_dato.bd_manager;
+import com.example.basedatos.bd_manager;
 import com.example.caminata.service.Encriptacion;
 
 

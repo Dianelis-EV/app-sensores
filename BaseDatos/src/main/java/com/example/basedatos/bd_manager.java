@@ -1,10 +1,11 @@
-package com.example.base_dato;
+package com.example.basedatos;
 
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
+import android.widget.Toast;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -212,12 +213,16 @@ public class bd_manager  {
     public void person_insert(String nombre, String ci,String sexo, String telefono){
         ContentValues values = new ContentValues();
         this.open_to_write();
-        values.put(Person_name, nombre);
-        values.put(Person_ci,ci);
-        values.put(Person_sex,sexo);
-        values.put(Person_phone,telefono);
-        database.insert(Table_person,null,values);
+        if(database.isOpen()){
+            values.put(Person_name, nombre);
+            values.put(Person_ci,ci);
+            values.put(Person_sex,sexo);
+            values.put(Person_phone,telefono);
+            database.insert(Table_person,null,values);
+        }
         this.close();
+
+
     }
 
     public void person_update(String nombre, String ci, String sexo, String telefono){
@@ -228,7 +233,7 @@ public class bd_manager  {
 
             values.put(Person_name, nombre);
             values.put(Person_ci,ci);
-            values.put(Person_sex, sexo);
+            values.put(Person_sex, getsexId(sexo));
             values.put(Person_phone,telefono);
 
         this.open_to_write();
