@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="textBienbenida"> 42sp</dimen>
+    <dimen name="textNombreCompleto">18sp</dimen>
+    <dimen name="textCI">18sp</dimen>
+    <dimen name="textSexo">18sp</dimen>
+    <dimen name="textTelefono">18sp</dimen>
+    <dimen name="textEdad">18sp</dimen>
+    <dimen name="textPatologia">18sp</dimen>
+    <dimen name="textCalzado">18sp</dimen>
+    <dimen name="textMedicion">18sp</dimen>
+    <dimen name="textPierna">18sp</dimen>
+    <dimen name="textAltura">18sp</dimen>
+    <dimen name="textObservaciones">18sp</dimen>
+    <dimen name="Guardar">16sp</dimen>
+</resources>

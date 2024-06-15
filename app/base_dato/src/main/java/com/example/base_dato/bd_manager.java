@@ -187,6 +187,7 @@ public class bd_manager  {
         return id;
     }
 
+<<<<<<< HEAD
     public String user_getpassword(String name){
         String password=null;
         int userId = user_getID(name);
@@ -199,6 +200,24 @@ public class bd_manager  {
         result.close();
         this.close();
         return password;
+=======
+    public String getpassword(String name){
+        int id= user_getID(name);
+        String pass = null;
+        this.open_to_read();
+        Cursor result = database.rawQuery("Select contrasenna from usuario where id = " + '"' + id + '"',null);
+
+        if(result.moveToFirst()){
+            do {
+                int col= result.getColumnIndex(User_password);
+                pass = result.getString(col);
+            } while (result.moveToNext());
+        }
+        result.close();
+        this.close();
+
+        return pass;
+>>>>>>> interfaz_participante
     }
 
 

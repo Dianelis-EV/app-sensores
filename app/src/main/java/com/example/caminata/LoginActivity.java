@@ -4,16 +4,26 @@ import static com.example.caminata.R.id.crearCuenta;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
-import com.example.base_dato.bd_manager;
+//import com.example.base_dato.bd_manager;
+import com.example.basedatos.SesionAbierta.GetUser;
+import com.example.basedatos.bd_manager;
+//import com.example.base_dato.bd_manager;
+import com.example.caminata.service.Encriptacion;
+import com.example.interfazprincipal.ParticipanteActivity;
 
 public class LoginActivity extends AppCompatActivity {
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,14 +52,36 @@ public class LoginActivity extends AppCompatActivity {
         buttonLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if(newName.getText().toString().equals("") && newpass.getText().toString().equals("")) {
+                if(!newName.getText().toString().equals("") && !newpass.getText().toString().equals("")) {
                     String name = (String) newName.getText().toString();
                     String password = (String) newpass.getText().toString();
+                    bd_manager manager = new bd_manager(LoginActivity.this);
+                    try{
+                        if(manager.getpassword(name).equals(Encriptacion.getencriptacion(password))){
+                            GetUser.guardarValor(LoginActivity.this, "user", name);
+                            GetUser.guardarValor(LoginActivity.this, "password", Encriptacion.getencriptacion(password));
+                            Intent intent = new Intent(LoginActivity.this, ParticipanteActivity .class);
+                            startActivity(intent);
+                        }else{
+                            Toast.makeText(LoginActivity.this,"Nombre de usuario o contraseña incorrectos", Toast.LENGTH_LONG)
+                                    .show();
+                        }
+                    }catch (Exception e){
+                        Toast.makeText(LoginActivity.this,"Nombre de usuario o contraseña incorrectos", Toast.LENGTH_LONG)
+                                .show();
+                    }
+
+
+                }else{
+                    Toast.makeText(LoginActivity.this, "Campos obligatorios vacios", Toast.LENGTH_SHORT).show();
                 }
 
-                Intent intent = new Intent(LoginActivity.this, PrincipalActivity.class);
-                startActivity(intent);
+
             }
         });
     }
+
+
+
+
 }

@@ -1,0 +1,316 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <ImageView
+        android:id="@+id/imageManchaRosa"
+        android:layout_width="357dp"
+        android:layout_height="388dp"
+        android:layout_marginStart="94dp"
+        android:layout_marginBottom="419dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1.0"
+        app:srcCompat="@drawable/mancha_rosa_cuadado" />
+
+    <ImageView
+        android:id="@+id/imageManchaAzul"
+        android:layout_width="327dp"
+        android:layout_height="801dp"
+        android:layout_marginTop="18dp"
+        android:layout_marginEnd="138dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageManchaRosa"
+        app:layout_constraintVertical_bias="0.044"
+        app:srcCompat="@drawable/mancha_blue" />
+
+    <TextView
+        android:id="@+id/textBienbenida"
+        android:layout_width="203dp"
+        android:layout_height="153dp"
+        android:layout_marginTop="19dp"
+        android:layout_marginEnd="157dp"
+        android:layout_marginBottom="468dp"
+        android:text="Ingrese sus datos"
+        android:textSize="@dimen/textBienbenida"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ScrollView
+        android:layout_width="311dp"
+        android:layout_height="299dp"
+        android:layout_marginStart="22dp"
+        android:layout_marginEnd="23dp"
+        android:fillViewport="true"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textBienbenida">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/textNombreCompleto"
+                android:layout_width="wrap_content"
+                android:layout_height="38dp"
+                android:text="@string/textNombre"
+                android:textSize="@dimen/textNombreCompleto"
+                android:textStyle="bold" />
+
+            <EditText
+                android:id="@+id/editTextNombre"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:hint="@string/textNombre"
+                android:inputType="text" />
+
+            <TextView
+                android:id="@+id/textCI"
+                android:layout_width="wrap_content"
+                android:layout_height="37dp"
+                android:text="@string/textCI"
+                android:textSize="@dimen/textCI"
+                android:textStyle="bold" />
+
+            <EditText
+                android:id="@+id/editTextCI"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:hint="@string/ejemploCI"
+                android:inputType="text" />
+
+            <TextView
+                android:id="@+id/textView5"
+                android:layout_width="wrap_content"
+                android:layout_height="37dp"
+                android:text="@string/textSexo"
+                android:textSize="@dimen/textSexo"
+                android:textStyle="bold" />
+
+            <RadioGroup
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="37dp">
+
+                    <RadioButton
+                        android:id="@+id/radioButtonfemenino"
+                        android:layout_width="wrap_content"
+                        android:layout_height="37dp"
+                        android:layout_marginEnd="199dp"
+                        android:focusable="auto"
+                        android:text="@string/femenino"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <RadioButton
+                        android:id="@+id/radioButtonMasculino"
+                        android:layout_width="wrap_content"
+                        android:layout_height="37dp"
+                        android:layout_marginStart="154dp"
+                        android:layout_marginEnd="30dp"
+                        android:text="@string/masculino"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.0"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintVertical_bias="0.0" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+            </RadioGroup>
+
+            <TextView
+                android:id="@+id/textTelefono"
+                android:layout_width="wrap_content"
+                android:layout_height="37dp"
+                android:text="@string/textTelefono"
+                android:textSize="@dimen/textTelefono"
+                android:textStyle="bold" />
+
+            <EditText
+                android:id="@+id/editTextTelefono"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:hint="@string/ejemploTelefono"
+                android:inputType="phone" />
+
+            <TextView
+                android:id="@+id/textViewEdad"
+                android:layout_width="wrap_content"
+                android:layout_height="37dp"
+                android:text="@string/textEdad"
+                android:textSize="@dimen/textEdad"
+                android:textStyle="bold" />
+
+
+            <EditText
+                android:id="@+id/editTextNumberEdad"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:inputType="numberSigned" />
+
+            <TextView
+                android:id="@+id/textViewPatologia"
+                android:layout_width="wrap_content"
+                android:layout_height="37dp"
+                android:text="@string/textPatologia"
+                android:textSize="@dimen/textSexo"
+                android:textStyle="bold" />
+
+            <RadioGroup
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="37dp">
+
+                    <RadioButton
+                        android:id="@+id/radioButtonSi"
+                        android:layout_width="wrap_content"
+                        android:layout_height="37dp"
+                        android:layout_marginEnd="199dp"
+                        android:focusable="auto"
+                        android:text="@string/textSi"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <RadioButton
+                        android:id="@+id/radioButtonNo"
+                        android:layout_width="wrap_content"
+                        android:layout_height="37dp"
+                        android:layout_marginStart="154dp"
+                        android:layout_marginEnd="30dp"
+                        android:text="@string/textNo"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.0"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintVertical_bias="0.0" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+            </RadioGroup>
+
+            <TextView
+                android:id="@+id/textViewCalzado"
+                android:layout_width="wrap_content"
+                android:layout_height="37dp"
+                android:text="@string/textCalzado"
+                android:textSize="@dimen/textCalzado"
+                android:textStyle="bold" />
+
+            <EditText
+                android:id="@+id/editTextNumberCalzado"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:inputType="numberDecimal" />
+
+            <TextView
+                android:id="@+id/textViewMedicion"
+                android:layout_width="wrap_content"
+                android:layout_height="37dp"
+                android:text="@string/textMedicion"
+                android:textSize="@dimen/textMedicion"
+                android:textStyle="bold" />
+
+            <EditText
+                android:id="@+id/editTextNumberMedicion"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:inputType="numberDecimal" />
+
+            <TextView
+                android:id="@+id/textViewPierna"
+                android:layout_width="wrap_content"
+                android:layout_height="37dp"
+                android:text="@string/textPierna"
+                android:textSize="@dimen/textPierna"
+                android:textStyle="bold" />
+
+            <EditText
+                android:id="@+id/editTextNumberPierna"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:inputType="numberDecimal" />
+
+            <TextView
+                android:id="@+id/textViewAltura"
+                android:layout_width="wrap_content"
+                android:layout_height="37dp"
+                android:text="@string/textAltura"
+                android:textSize="@dimen/textAltura"
+                android:textStyle="bold" />
+
+            <EditText
+                android:id="@+id/editTextNumberAltura"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:inputType="numberDecimal" />
+
+            <TextView
+                android:id="@+id/textObservacion"
+                android:layout_width="wrap_content"
+                android:layout_height="38dp"
+                android:text="@string/textObservaciones"
+                android:textSize="@dimen/textObservaciones"
+                android:textStyle="bold"
+                android:visibility="invisible" />
+
+            <EditText
+                android:id="@+id/editObservacion"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:hint="@string/notaObservaciones"
+                android:inputType="text"
+                android:visibility="invisible" />
+        </LinearLayout>
+    </ScrollView>
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/buttonGuardar"
+        android:layout_width="144dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="190dp"
+        android:layout_marginTop="553dp"
+        android:layout_marginEnd="26dp"
+        android:layout_marginBottom="37dp"
+        android:background="@drawable/button_background"
+        android:text="@string/buttonGuardar"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

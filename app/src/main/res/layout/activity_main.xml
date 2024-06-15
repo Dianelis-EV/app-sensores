@@ -17,7 +17,7 @@
         app:srcCompat="@drawable/dise_o_sin_t_tulo" />
 
     <TextView
-        android:id="@+id/textView"
+        android:id="@+id/textTelefono"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Caminata"

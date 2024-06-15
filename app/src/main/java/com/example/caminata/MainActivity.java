@@ -8,10 +8,11 @@ import android.database.sqlite.SQLiteException;
 import android.os.Bundle;
 import android.os.Handler;
 import android.util.Log;
+import android.widget.Toast;
 
-
-import com.example.base_dato.bd_connection;
-import com.example.base_dato.bd_manager;
+import com.example.basedatos.SesionAbierta.GetUser;
+import com.example.basedatos.bd_manager;
+import com.example.interfazprincipal.ParticipanteActivity;
 
 import java.lang.reflect.Array;
 import java.util.ArrayList;
@@ -23,17 +24,34 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-      // bd_manager manager = new bd_manager(MainActivity.this);
-       //prueba
+         //prueba
       //  manager.person_deleteAll();
-        new Handler().postDelayed(new Runnable() {
+
+
+       new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
                 // Aquí puedes iniciar una nueva actividad o realizar otra acción
                 // Por ejemplo, iniciar una nueva actividad llamada 'NuevaActividad'
-                Intent intent = new Intent(MainActivity.this, LoginActivity.class);
-                startActivity(intent);
-                finish(); // Finaliza la MainActivity actual
+                String user = GetUser.leerValor(MainActivity.this, "user");
+                String pass = GetUser.leerValor(MainActivity.this, "password");
+
+                if(!user.equals("") && !pass.equals("")){
+                    try{
+                        Intent intent = new Intent(MainActivity.this, PrincipalActivity.class);
+                        startActivity(intent);
+                        finish();
+                    }catch (Exception e){
+                        Toast.makeText(MainActivity.this, e.getMessage(), Toast.LENGTH_SHORT).show();
+                    }
+
+                }else{
+                    Intent intent = new Intent(MainActivity.this, LoginActivity.class);
+                    startActivity(intent);
+                    finish(); // Finaliza la MainActivity actual
+                }
+
+
             }
         }, 5000);
 

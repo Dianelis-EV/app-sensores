@@ -120,7 +120,7 @@
         app:layout_constraintStart_toEndOf="@+id/imageView18"
         app:layout_constraintTop_toBottomOf="@+id/newaccountpassword" />
 
-    <Button
+    <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/buttonsigin"
         android:layout_width="184dp"
         android:layout_height="41dp"
