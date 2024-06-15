@@ -10,6 +10,7 @@ import android.os.Handler;
 import android.util.Log;
 import android.widget.Toast;
 
+import com.example.basedatos.SesionAbierta.GetUser;
 import com.example.basedatos.bd_manager;
 import com.example.interfazprincipal.ParticipanteActivity;
 
@@ -32,12 +33,12 @@ public class MainActivity extends AppCompatActivity {
             public void run() {
                 // Aquí puedes iniciar una nueva actividad o realizar otra acción
                 // Por ejemplo, iniciar una nueva actividad llamada 'NuevaActividad'
-                String user = LoginActivity.leerValor(MainActivity.this, "user");
-                String pass = LoginActivity.leerValor(MainActivity.this, "password");
+                String user = GetUser.leerValor(MainActivity.this, "user");
+                String pass = GetUser.leerValor(MainActivity.this, "password");
 
                 if(!user.equals("") && !pass.equals("")){
                     try{
-                        Intent intent = new Intent(MainActivity.this, ParticipanteActivity.class);
+                        Intent intent = new Intent(MainActivity.this, PrincipalActivity.class);
                         startActivity(intent);
                         finish();
                     }catch (Exception e){

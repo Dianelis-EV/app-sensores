@@ -15,13 +15,14 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 //import com.example.base_dato.bd_manager;
+import com.example.basedatos.SesionAbierta.GetUser;
 import com.example.basedatos.bd_manager;
 //import com.example.base_dato.bd_manager;
 import com.example.caminata.service.Encriptacion;
 import com.example.interfazprincipal.ParticipanteActivity;
 
 public class LoginActivity extends AppCompatActivity {
-    private static String PREFS_KEY = "miscredenciales";
+
 
 
     @Override
@@ -57,9 +58,9 @@ public class LoginActivity extends AppCompatActivity {
                     bd_manager manager = new bd_manager(LoginActivity.this);
                     try{
                         if(manager.getpassword(name).equals(Encriptacion.getencriptacion(password))){
-                            guardarValor(LoginActivity.this, "user", name);
-                            guardarValor(LoginActivity.this, "password", Encriptacion.getencriptacion(password));
-                            Intent intent = new Intent(LoginActivity.this, ParticipanteActivity.class);
+                            GetUser.guardarValor(LoginActivity.this, "user", name);
+                            GetUser.guardarValor(LoginActivity.this, "password", Encriptacion.getencriptacion(password));
+                            Intent intent = new Intent(LoginActivity.this, ParticipanteActivity .class);
                             startActivity(intent);
                         }else{
                             Toast.makeText(LoginActivity.this,"Nombre de usuario o contraseña incorrectos", Toast.LENGTH_LONG)
@@ -82,15 +83,5 @@ public class LoginActivity extends AppCompatActivity {
 
 
 
-    public static void guardarValor(Context context, String keyPref, String valor) {
-        SharedPreferences settings = context.getSharedPreferences(PREFS_KEY, MODE_PRIVATE);
-        SharedPreferences.Editor editor;
-        editor = settings.edit();
-        editor.putString(keyPref, valor);
-        editor.commit();
-    }
-    public static String leerValor(Context context, String keyPref) {
-        SharedPreferences preferences = context.getSharedPreferences(PREFS_KEY, MODE_PRIVATE);
-        return preferences.getString(keyPref, "");
-    }
+
 }

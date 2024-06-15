@@ -228,23 +228,6 @@ public class bd_manager  {
 
     }
 
-    public void person_insert_prueba(String nombre, String ci,String sexo, String telefono){
-        ContentValues values = new ContentValues();
-        int id_user = user_getID("Rayner");
-        this.open_to_write();
-        if(database.isOpen()){
-            values.put("id_usuario", nombre);
-            values.put(Person_name, nombre);
-            values.put(Person_ci,ci);
-            values.put(Person_sex,sexo);
-            values.put(Person_phone,telefono);
-            database.insert(Table_person,null,values);
-        }
-        this.close();
-
-
-    }
-
     public void person_update(String nombre, String ci, String sexo, String telefono){
         int id = person_getID(ci);
         String whereClause = Person_id + " = ?";
@@ -358,6 +341,7 @@ public class bd_manager  {
 
    public void data_insert(String ci, int edad, int patologia, double calzado, double cintura_tobillo,
                             double largo_pierna, double altura_sensor, String obsercion){
+       // 0 = false 1 = true
         ContentValues values = new ContentValues();
         values.put(id_person, person_getID(ci));
         values.put(data_date,getDate());

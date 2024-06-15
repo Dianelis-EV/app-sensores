@@ -9,4 +9,14 @@
     <string name="femenino">Femenino</string>
     <string name="masculino">Masculino</string>
     <string name="buttonGuardar">Guardar</string>
+    <string name="textEdad">Edad</string>
+    <string name="textPatologia">Patología</string>
+    <string name="textSi">Si</string>
+    <string name="textNo">No</string>
+    <string name="textCalzado">Número de calzado</string>
+    <string name="textMedicion">Medición de la cintura al tobillo</string>
+    <string name="textPierna">Medicion de largo de la pierna</string>
+    <string name="textAltura">Altura a la que se coloca el sensor</string>
+    <string name="textObservaciones">Observación</string>
+    <string name="notaObservaciones">Coloque la patologia que padece</string>
 </resources>
