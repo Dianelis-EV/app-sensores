@@ -14,8 +14,6 @@
             <option value="$PROJECT_DIR$" />
             <option value="$PROJECT_DIR$/BaseDatos" />
             <option value="$PROJECT_DIR$/app" />
-            <option value="$PROJECT_DIR$/app/base_dato" />
-            <option value="$PROJECT_DIR$/app/getSensor" />
             <option value="$PROJECT_DIR$/interfazprarticipante" />
           </set>
         </option>

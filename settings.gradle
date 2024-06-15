@@ -14,7 +14,5 @@ dependencyResolutionManagement {
 }
 rootProject.name = "Caminata"
 include ':app'
-include ':app:base_dato'
-include ':app:getSensor'
 include ':interfazprarticipante'
 include ':BaseDatos'

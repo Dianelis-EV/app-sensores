@@ -45,7 +45,7 @@ dependencies {
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.1'
 
 
-    api project(path: "getSensor")
+
     implementation project(":BaseDatos")
     implementation project(":interfazprarticipante")
 
