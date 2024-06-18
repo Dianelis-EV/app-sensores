@@ -1,36 +1,281 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-
-
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="#f2f2f2">
 
-    <com.google.android.material.appbar.AppBarLayout
-        android:id="@+id/appbar"
-
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="79dp">
+        android:layout_height="match_parent">
 
-        <androidx.appcompat.widget.Toolbar
-            android:id="@+id/toolbar"
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="78dp"
-            android:background="@color/barra_menu"
-            android:minHeight="?attr/actionBarSize"
-            android:theme="?attr/actionBarTheme" />
-    </com.google.android.material.appbar.AppBarLayout>
+            android:layout_height="wrap_content"
+            android:orientation="vertical" >
 
-    <androidx.core.widget.NestedScrollView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="326dp"
+                android:layout_height="match_parent"
+                android:layout_marginStart="32dp"
+                android:layout_marginTop="32dp"
+                android:layout_marginEnd="32dp">
 
+                <TextView
+                    android:id="@+id/textViewPrincipalUsuario"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/BienvenidoUsuer"
+                    android:textSize="@dimen/BienvenidoUsuer"
+                    android:textStyle="bold"
+                    app:layout_constraintStart_toStartOf="parent" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
 
-        app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior">
+            <TextView
+                android:id="@+id/textView6"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/textViewBuscar"
+                android:textSize="@dimen/textViewBuscar"
+                android:textStyle="bold"
+                android:layout_marginTop="16dp"
+                android:textAlignment="center"/>
 
+            <EditText
+                android:id="@+id/editTextText"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_marginStart="24dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="24dp"
+                android:layout_marginBottom="16dp"
+                android:background="@drawable/edittext_backgraund"
+                android:drawablePadding="10dp"
+                android:ems="10"
+                android:hint="@string/textBuscar"
+                android:inputType="textPersonName"
+                android:textAlignment="viewStart"
+                android:textSize="16sp"
+                android:textStyle="italic"
+                android:padding="5dp" />
 
-    </androidx.core.widget.NestedScrollView>
+            <HorizontalScrollView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="2dp">
 
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal">
 
-</androidx.coordinatorlayout.widget.CoordinatorLayout>
+                    <LinearLayout
+                        android:id="@+id/AddBluetooth"
+                        android:layout_width="100dp"
+                        android:layout_height="100dp"
+                        android:layout_margin="10dp"
+                        android:background="@drawable/top_button_bluetooth_background"
+                        android:orientation="vertical">
+
+                        <ImageView
+                            android:id="@+id/imageView29"
+                            android:layout_width="69dp"
+                            android:layout_height="52dp"
+                            android:layout_margin="10dp"
+                            app:srcCompat="@drawable/agregar_bluetooth" />
+
+                        <TextView
+                            android:id="@+id/textViewAddBluetooth"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginBottom="8dp"
+                            android:text="@string/textViewdispositivos"
+                            android:textAlignment="center"
+                            android:textColor="#000000"
+                            android:textSize="@dimen/textViewdispositivos"
+                            android:textStyle="bold" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/AddParticipante"
+                        android:layout_width="100dp"
+                        android:layout_height="100dp"
+                        android:layout_margin="10dp"
+                        android:background="@drawable/top_button_bluetooth_background"
+                        android:orientation="vertical">
+
+                        <ImageView
+                            android:id="@+id/imageView30"
+                            android:layout_width="78dp"
+                            android:layout_height="52dp"
+                            android:layout_margin="10dp"
+                            app:srcCompat="@drawable/agregar_participante" />
+
+                        <TextView
+                            android:id="@+id/textViewAddParticipante"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginBottom="8dp"
+                            android:text="@string/textViewdParticipantes"
+                            android:textAlignment="center"
+                            android:textColor="#000000"
+                            android:textSize="@dimen/textViewdParticipantes"
+                            android:textStyle="bold" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/AddDatos"
+                        android:layout_width="100dp"
+                        android:layout_height="100dp"
+                        android:layout_margin="10dp"
+                        android:background="@drawable/top_button_bluetooth_background"
+                        android:orientation="vertical">
+
+                        <ImageView
+                            android:id="@+id/imageView31"
+                            android:layout_width="82dp"
+                            android:layout_height="52dp"
+                            android:layout_margin="10dp"
+                            app:srcCompat="@drawable/agregar_datos" />
+
+                        <TextView
+                            android:id="@+id/textViewAddDatos"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginBottom="8dp"
+                            android:text="@string/textViewDatos"
+                            android:textAlignment="center"
+                            android:textColor="#000000"
+                            android:textSize="@dimen/textViewdispositivos"
+                            android:textStyle="bold" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/AddSennal"
+                        android:layout_width="100dp"
+                        android:layout_height="100dp"
+                        android:layout_margin="10dp"
+                        android:background="@drawable/top_button_bluetooth_background"
+                        android:orientation="vertical">
+
+                        <ImageView
+                            android:id="@+id/imageView32"
+                            android:layout_width="69dp"
+                            android:layout_height="52dp"
+                            android:layout_margin="10dp"
+                            app:srcCompat="@drawable/agregar_sennales" />
+
+                        <TextView
+                            android:id="@+id/textViewAddSeñales"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginBottom="8dp"
+                            android:text="@string/textViewSennales"
+                            android:textAlignment="center"
+                            android:textColor="#000000"
+                            android:textSize="@dimen/textViewSennales"
+                            android:textStyle="bold" />
+                    </LinearLayout>
+                </LinearLayout>
+            </HorizontalScrollView>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="49dp"
+                android:orientation="horizontal"
+                android:layout_margin="10dp"
+                android:layout_marginTop="2dp">
+
+                <TextView
+                    android:id="@+id/textView9"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:text="@string/textViewdParticipantes"
+                    android:textAlignment="viewStart"
+                    android:textSize="@dimen/textViewdParticipantes2"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/textViewAll"
+                    android:layout_width="175dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:text="@string/texViewTodos"
+                    android:textAlignment="viewEnd"
+                    android:textColor="#edbea4"
+                    android:textSize="@dimen/textViewdParticipantes2"
+                    android:textStyle="bold"
+                    android:visibility="invisible" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/ParticipanteName2"
+                android:layout_width="match_parent"
+                android:layout_height="68dp"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="2dp"
+                android:layout_marginEnd="10dp"
+                android:orientation="vertical"
+                android:visibility="invisible">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/ConstraintLayout2"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/row_background">
+
+                    <TextView
+                        android:id="@+id/textViewParticipanteName2"
+                        android:layout_width="311dp"
+                        android:layout_height="51dp"
+                        android:layout_marginStart="16dp"
+                        android:layout_marginBottom="16dp"
+                        android:text="TextView"
+                        android:textSize="24sp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintVertical_bias="1.0" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/ParticipanteName"
+                android:layout_width="match_parent"
+                android:layout_height="68dp"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="7dp"
+                android:layout_marginEnd="10dp"
+                android:orientation="vertical"
+                android:visibility="invisible">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/ConstraintLayout"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/row_background">
+
+                    <TextView
+                        android:id="@+id/textViewParticipanteName"
+                        android:layout_width="162dp"
+                        android:layout_height="44dp"
+                        android:layout_marginStart="16dp"
+                        android:layout_marginBottom="16dp"
+                        android:text="TextView"
+                        android:textSize="24sp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintVertical_bias="1.0" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+            </LinearLayout>
+
+        </LinearLayout>
+    </ScrollView>
+</androidx.constraintlayout.widget.ConstraintLayout>
 

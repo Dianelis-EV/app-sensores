@@ -315,6 +315,49 @@ public class bd_manager  {
         return id;
     }
 
+    public int person_count(){
+        int count=-1;
+        this.open_to_read();
+        Cursor result = database.rawQuery("Select count(*) from  participante "  ,null);
+
+        if(result.moveToFirst()){
+            do {
+            count= result.getCount();
+            } while (result.moveToNext());
+        }
+        result.close();
+        this.close();
+
+        return count;
+    }
+
+    public ArrayList<String> person_namelist() {
+        ArrayList<String> list = new ArrayList<String>();
+        int name = -1;
+        int ci = -1;
+        int sexo = -1;
+        int telef = -1;
+        int cant = -1;
+
+        this.open_to_read();
+        Cursor result = database.rawQuery("Select nombre FROM participante" , null);
+        if (result != null && result.getCount() >0 ) {
+            result.moveToFirst();
+            try {
+                do {
+                    name = result.getColumnIndex(Person_name);
+                    String p_nombre = result.getString(name);
+                    list.add(p_nombre);
+                } while (result.moveToNext());
+
+            } finally {
+                result.close();
+                this.close();
+            }
+        }
+        return list;
+    }
+
     public int getsexId(String sexo ){
         int  id = -1;
         this.open_to_read();

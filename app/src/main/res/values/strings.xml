@@ -1,12 +1,13 @@
 <resources>
-    <string name="app_name">Caminata</string>
-    <string name="title_activity_login">Login_activity</string>
-    <string name="prompt_email">Email</string>
-    <string name="prompt_password">Password</string>
-    <string name="action_sign_in">Sign in or register</string>
-    <string name="action_sign_in_short">Sign in</string>
-    <string name="welcome">"Welcome !"</string>
-    <string name="invalid_username">Not a valid username</string>
-    <string name="invalid_password">Password must be >5 characters</string>
-    <string name="login_failed">"Login f"</string>
+    <string name="BienvenidoUsuer">Bienvenido</string>
+    <string name="textViewdispositivos">Bluetooth</string>
+    <string name="textViewdParticipantes">Participante</string>
+    <string name="textViewDatos">Datos Participante</string>
+    <string name="textViewSennales">Señales</string>
+    <string name="textViewBuscar">Buscar participante</string>
+    <string name="textBuscar">Buscar participante</string>
+
+    <string name="texViewTodos">Ver todos</string>
+    <string name="menu_gallery">Gallery</string>
+    <string name="menu_slideshow">Slideshow</string>
 </resources>

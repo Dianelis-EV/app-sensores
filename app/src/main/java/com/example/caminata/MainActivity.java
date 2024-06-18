@@ -38,7 +38,7 @@ public class MainActivity extends AppCompatActivity {
 
                 if(!user.equals("") && !pass.equals("")){
                     try{
-                        Intent intent = new Intent(MainActivity.this, ParticipanteActivity.class);
+                        Intent intent = new Intent(MainActivity.this, PrincipalActivity.class);
                         startActivity(intent);
                         finish();
                     }catch (Exception e){

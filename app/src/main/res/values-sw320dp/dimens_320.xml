@@ -6,4 +6,12 @@
     <dimen name="login">15sp</dimen>
     <dimen name="nueva_cuenta">18sp</dimen>
     <dimen name="create_newaccount">42sp</dimen>
+    <dimen name="BienvenidoUsuer">35sp</dimen>
+    <dimen name="textViewdispositivos">16sp</dimen>
+    <dimen name="textViewdParticipantes">16sp</dimen>
+    <dimen name="textViewDatos">16sp</dimen>
+    <dimen name="textViewSennales">16sp</dimen>
+    <dimen name="textViewBuscar">28sp</dimen>
+    <dimen name="textViewdParticipantes2">24sp</dimen>
+    <dimen name="texViewTodos">24sp</dimen>
 </resources>

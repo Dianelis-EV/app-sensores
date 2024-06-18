@@ -60,7 +60,7 @@ public class LoginActivity extends AppCompatActivity {
                         if(manager.getpassword(name).equals(Encriptacion.getencriptacion(password))){
                             GetUser.guardarValor(LoginActivity.this, "user", name);
                             GetUser.guardarValor(LoginActivity.this, "password", Encriptacion.getencriptacion(password));
-                            Intent intent = new Intent(LoginActivity.this, ParticipanteActivity .class);
+                            Intent intent = new Intent(LoginActivity.this, PrincipalActivity.class);
                             startActivity(intent);
                         }else{
                             Toast.makeText(LoginActivity.this,"Nombre de usuario o contraseña incorrectos", Toast.LENGTH_LONG)
