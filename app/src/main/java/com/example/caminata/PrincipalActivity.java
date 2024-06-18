@@ -7,10 +7,10 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.example.basedatos.SesionAbierta.GetUser;
 import com.example.basedatos.bd_manager;
+import com.example.basedatos.model.Person;
 import com.example.interfazprincipal.ParticipanteActivity;
 
 import java.util.ArrayList;
@@ -47,35 +47,70 @@ public class PrincipalActivity extends AppCompatActivity {
     }
 
     public void visibles(){
-        LinearLayout linearLayoutparticipante1 = (LinearLayout) findViewById(R.id.ParticipanteName2);
-        TextView textViewname1 = (TextView) findViewById(R.id.textViewParticipanteName2);
-        LinearLayout linearLayoutparticipante2 = (LinearLayout) findViewById(R.id.ParticipanteName);
-        TextView textViewname2 = (TextView) findViewById(R.id.textViewParticipanteName);
+        LinearLayout linearLayoutparticipante1 = (LinearLayout) findViewById(R.id.ParticipanteName);
+        TextView textViewParticipanteName = (TextView) findViewById(R.id.textViewParticipanteName);
+        TextView textViewCarnetPrincipal = (TextView) findViewById(R.id.textViewCarnetPrincipal);
+        TextView textViewTelefonoPrincipal = (TextView) findViewById(R.id.textViewTelefonoPrincipal);
+
+        LinearLayout linearLayoutparticipante2 = (LinearLayout) findViewById(R.id.ParticipanteName2);
+        TextView textViewname2 = (TextView) findViewById(R.id.textViewParticipanteName2);
+        TextView textViewCarnetPrincipal2= (TextView) findViewById(R.id.textViewCarnetPrincipal2);
+        TextView textViewTelefonoPrincipal2 = (TextView) findViewById(R.id.textViewTelefonoPrincipal2);
         TextView textViewAll = (TextView) findViewById(R.id.textViewAll);
+        TextView textViewparticipante = (TextView) findViewById(R.id.textView9);
+
         bd_manager manager = new bd_manager(this);
-        List<String> nameList= manager.person_namelist();
+        ArrayList<Person> nameList= manager.person_list();
         int cant = manager.person_count();
         if(cant != -1){
             if(!nameList.isEmpty()){
                 if(nameList.size()==1){
-                    CharSequence name = nameList.get(0);
+                    textViewparticipante.setVisibility(View.VISIBLE);
                     linearLayoutparticipante1.setVisibility(View.VISIBLE);
-                    textViewname1.setText(name);
+                    CharSequence name = nameList.get(0).getName();
+                    CharSequence ci = nameList.get(0).getCi();
+                    CharSequence telef = nameList.get(0).getTelefono();
+                    textViewParticipanteName.setText(name);
+                    textViewCarnetPrincipal.setText(ci);
+                    textViewTelefonoPrincipal.setText(telef);
                 }else if(nameList.size()==2){
-                    CharSequence name = nameList.get(0);
+                    textViewparticipante.setVisibility(View.VISIBLE);
+
+                    CharSequence name = nameList.get(0).getName();
+                    CharSequence ci = nameList.get(0).getCi();
+                    CharSequence telef = nameList.get(0).getTelefono();
                     linearLayoutparticipante1.setVisibility(View.VISIBLE);
-                    textViewname1.setText(name);
-                    CharSequence name2 = nameList.get(1);
+                    textViewParticipanteName.setText(name);
+                    textViewCarnetPrincipal.setText(ci);
+                    textViewTelefonoPrincipal.setText(telef);
+
+                    CharSequence name2 = nameList.get(1).getName();
+                    CharSequence ci2 = nameList.get(2).getCi();
+                    CharSequence telef2 = nameList.get(2).getTelefono();
                     linearLayoutparticipante2.setVisibility(View.VISIBLE);
                     textViewname2.setText(name2);
+                    textViewCarnetPrincipal2.setText(ci2);
+                    textViewTelefonoPrincipal2.setText(telef2);
                 }else {
-                    CharSequence name = nameList.get(0);
-                    linearLayoutparticipante1.setVisibility(View.VISIBLE);
-                    textViewname1.setText(name);
-                    CharSequence name2 = nameList.get(1);
-                    linearLayoutparticipante2.setVisibility(View.VISIBLE);
                     textViewAll.setVisibility(View.VISIBLE);
+                    textViewparticipante.setVisibility(View.VISIBLE);
+
+                    linearLayoutparticipante1.setVisibility(View.VISIBLE);
+                    CharSequence name = nameList.get(0).getName();
+                    CharSequence ci = nameList.get(0).getCi();
+                    CharSequence telef = nameList.get(0).getTelefono();
+                    textViewParticipanteName.setText(name);
+                    textViewCarnetPrincipal.setText(ci);
+                    textViewTelefonoPrincipal.setText(telef);
+
+                    linearLayoutparticipante2.setVisibility(View.VISIBLE);
+                    CharSequence name2 = nameList.get(1).getName();
+                    CharSequence ci2 = nameList.get(1).getCi();
+                    CharSequence telef2 = nameList.get(1).getTelefono();
                     textViewname2.setText(name2);
+                    textViewCarnetPrincipal2.setText(ci2);
+                    textViewTelefonoPrincipal2.setText(telef2);
+
                 }
             }
         }

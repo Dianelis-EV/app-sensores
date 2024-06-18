@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">InterfazPrincipal</string>
+    <string name="app_name">Caminata</string>
     <string name="textCI">Carnet de identidad</string>
     <string name="textSexo">Sexo</string>
     <string name="textTelefono">Numero de teléfono</string>

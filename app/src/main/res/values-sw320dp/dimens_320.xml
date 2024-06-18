@@ -11,6 +11,7 @@
     <dimen name="textViewdParticipantes">16sp</dimen>
     <dimen name="textViewDatos">16sp</dimen>
     <dimen name="textViewSennales">16sp</dimen>
+    <dimen name="configuracion">16sp</dimen>
     <dimen name="textViewBuscar">28sp</dimen>
     <dimen name="textViewdParticipantes2">24sp</dimen>
     <dimen name="texViewTodos">24sp</dimen>

@@ -6,4 +6,6 @@
     <dimen name="login">15sp</dimen>
     <dimen name="nueva_cuenta">18sp</dimen>
     <dimen name="create_newaccount">69sp</dimen>
+
+
 </resources>

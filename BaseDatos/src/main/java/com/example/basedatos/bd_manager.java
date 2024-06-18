@@ -7,6 +7,8 @@ import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
 import android.widget.Toast;
 
+import com.example.basedatos.model.Person;
+
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
@@ -261,8 +263,8 @@ public class bd_manager  {
         this.close();
     }
 
-    public ArrayList<String> person_list() {
-        ArrayList<String> list = new ArrayList<String>();
+    public ArrayList<Person> person_list() {
+        ArrayList<Person> list = new ArrayList<Person>();
         int name = -1;
         int ci = -1;
         int sexo = -1;
@@ -284,10 +286,8 @@ public class bd_manager  {
                     String p_ci = result.getString(ci);
                     String p_sexo = result.getString(sexo);
                     String p_telef = result.getString(telef);
-                    list.add(p_nombre);
-                    list.add(p_ci);
-                    list.add(p_sexo);
-                    list.add(p_telef);
+                    Person newPerson = new Person(p_nombre,p_ci,p_sexo,p_telef);
+                    list.add(newPerson);
                 } while (result.moveToNext());
 
             } finally {

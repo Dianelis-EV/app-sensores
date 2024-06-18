@@ -1,8 +1,381 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#f2f2f2">
 
 
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scrollbars="none">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="326dp"
+                android:layout_height="match_parent"
+                android:layout_marginStart="32dp"
+                android:layout_marginTop="60dp"
+                android:layout_marginEnd="32dp">
+
+                <TextView
+                    android:id="@+id/textViewPrincipalUsuario"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/BienvenidoUsuer"
+                    android:textSize="@dimen/BienvenidoUsuer"
+                    android:textStyle="bold"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <TextView
+                android:id="@+id/textView6"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="30dp"
+                android:text="@string/textViewBuscar"
+                android:textAlignment="center"
+                android:textSize="@dimen/textViewBuscar"
+                android:textStyle="bold" />
+
+            <EditText
+                android:id="@+id/editTextText"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_marginStart="24dp"
+                android:layout_marginTop="30dp"
+                android:layout_marginEnd="24dp"
+                android:layout_marginBottom="16dp"
+                android:background="@drawable/edittext_backgraund"
+                android:drawableStart="@drawable/search_icon"
+                android:drawablePadding="10dp"
+
+                android:ems="10"
+                android:hint="@string/textBuscar"
+                android:inputType="textPersonName"
+                android:padding="5dp"
+                android:textAlignment="viewStart"
+                android:textSize="20sp"
+                android:textStyle="italic" />
+
+            <HorizontalScrollView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="20dp"
+                android:scrollbars="none">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal">
+
+                    <LinearLayout
+                        android:id="@+id/AddBluetooth"
+                        android:layout_width="100dp"
+                        android:layout_height="100dp"
+                        android:layout_margin="10dp"
+                        android:background="@drawable/top_button_bluetooth_background"
+                        android:orientation="vertical">
+
+                        <ImageView
+                            android:id="@+id/imageView29"
+                            app:srcCompat="@drawable/agregar_bluetooth"
+                            android:layout_width="69dp"
+                            android:layout_height="52dp"
+                            android:layout_margin="10dp" />
+
+                        <TextView
+                            android:id="@+id/textViewAddBluetooth"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginBottom="8dp"
+                            android:text="@string/textViewdispositivos"
+                            android:textAlignment="center"
+                            android:textColor="#000000"
+                            android:textSize="@dimen/textViewdispositivos"
+                            android:textStyle="bold" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/AddParticipante"
+                        android:layout_width="100dp"
+                        android:layout_height="100dp"
+                        android:layout_margin="10dp"
+                        android:background="@drawable/top_button_bluetooth_background"
+                        android:orientation="vertical">
+
+                        <ImageView
+                            android:id="@+id/imageView30"
+                            app:srcCompat="@drawable/persona"
+                            android:layout_width="78dp"
+                            android:layout_height="52dp"
+                            android:layout_margin="10dp" />
+
+                        <TextView
+                            android:id="@+id/textViewAddParticipante"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginBottom="8dp"
+                            android:text="@string/textViewdParticipantes"
+                            android:textAlignment="center"
+                            android:textColor="#000000"
+                            android:textSize="@dimen/textViewdParticipantes"
+                            android:textStyle="bold" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/AddDatos"
+                        android:layout_width="100dp"
+                        android:layout_height="100dp"
+                        android:layout_margin="10dp"
+                        android:background="@drawable/top_button_bluetooth_background"
+                        android:orientation="vertical">
+
+                        <ImageView
+                            android:id="@+id/imageView31"
+                            app:srcCompat="@drawable/agregar_datos"
+                            android:layout_width="82dp"
+                            android:layout_height="52dp"
+                            android:layout_margin="10dp" />
+
+                        <TextView
+                            android:id="@+id/textViewAddDatos"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginBottom="8dp"
+                            android:text="@string/textViewDatos"
+                            android:textAlignment="center"
+                            android:textColor="#000000"
+                            android:textSize="@dimen/textViewdispositivos"
+                            android:textStyle="bold" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/AddSennal"
+                        android:layout_width="100dp"
+                        android:layout_height="100dp"
+                        android:layout_margin="10dp"
+                        android:background="@drawable/top_button_bluetooth_background"
+                        android:orientation="vertical">
+
+                        <ImageView
+                            android:id="@+id/imageView32"
+                            app:srcCompat="@drawable/agregar_sennales"
+                            android:layout_width="69dp"
+                            android:layout_height="52dp"
+                            android:layout_margin="10dp" />
+
+                        <TextView
+                            android:id="@+id/textViewAddSeñales"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginBottom="8dp"
+                            android:text="@string/textViewSennales"
+                            android:textAlignment="center"
+                            android:textColor="#000000"
+                            android:textSize="@dimen/textViewSennales"
+                            android:textStyle="bold" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/idconfiguracion"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_margin="10dp"
+                        android:background="@drawable/top_button_bluetooth_background"
+                        android:orientation="vertical">
+
+                        <ImageView
+                            android:id="@+id/imageViewconfiguracion"
+                            app:srcCompat="@drawable/configuracion_modificacion"
+                            android:layout_width="69dp"
+                            android:layout_height="52dp"
+                            android:layout_margin="10dp" />
+
+                        <TextView
+                            android:id="@+id/configuracion"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginBottom="8dp"
+                            android:text="@string/configuracion"
+                            android:textAlignment="center"
+                            android:textColor="#000000"
+                            android:textSize="@dimen/configuracion"
+                            android:textStyle="bold" />
+                    </LinearLayout>
+                </LinearLayout>
+            </HorizontalScrollView>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="49dp"
+                android:layout_margin="10dp"
+                android:layout_marginTop="20dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/textView9"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:text="@string/textViewdParticipantes"
+                    android:textAlignment="viewStart"
+                    android:textSize="@dimen/textViewdParticipantes2"
+                    android:textStyle="bold"
+                    android:visibility="invisible" />
+
+                <TextView
+                    android:id="@+id/textViewAll"
+                    android:layout_width="175dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:text="@string/texViewTodos"
+                    android:textAlignment="viewEnd"
+                    android:textColor="#edbea4"
+                    android:textSize="@dimen/textViewdParticipantes2"
+                    android:textStyle="bold"
+                    android:visibility="invisible" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/ParticipanteName"
+                android:layout_width="match_parent"
+                android:layout_height="112dp"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginEnd="10dp"
+                android:orientation="vertical"
+                android:visibility="invisible">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/ConstraintLayout2"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/row_background">
+
+                    <ImageView
+                        android:id="@+id/imageView33"
+                        android:layout_width="86dp"
+                        android:layout_height="85dp"
+                        android:layout_marginStart="16dp"
+                        android:layout_marginTop="16dp"
+                        android:layout_marginBottom="16dp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:srcCompat="@drawable/participante" />
+
+                    <TextView
+                        android:id="@+id/textViewParticipanteName"
+                        android:layout_width="220dp"
+                        android:layout_height="35dp"
+                        android:layout_marginStart="8dp"
+                        android:layout_marginTop="13dp"
+                        android:layout_marginEnd="18dp"
+                        android:text="Nombre"
+                        android:textColor="#26273a"
+                        android:textSize="24sp"
+                        android:textStyle="bold"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toEndOf="@+id/imageView33"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <TextView
+                        android:id="@+id/textViewCarnetPrincipal"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Carnet de identidad"
+                        android:textColor="#26273a"
+                        android:textSize="20sp"
+                        app:layout_constraintStart_toStartOf="@+id/textViewParticipanteName"
+                        app:layout_constraintTop_toBottomOf="@+id/textViewParticipanteName" />
+
+                    <TextView
+                        android:id="@+id/textViewTelefonoPrincipal"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Teléfono"
+                        android:textColor="#26273a"
+                        android:textSize="20sp"
+                        app:layout_constraintStart_toStartOf="@+id/textViewCarnetPrincipal"
+                        app:layout_constraintTop_toBottomOf="@+id/textViewCarnetPrincipal" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/ParticipanteName2"
+                android:layout_width="match_parent"
+                android:layout_height="107dp"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginEnd="10dp"
+                android:orientation="vertical"
+                android:visibility="invisible">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/ConstraintLayout"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/row_background">
+
+                    <ImageView
+                        android:id="@+id/imageView35"
+                        android:layout_width="86dp"
+                        android:layout_height="85dp"
+                        android:layout_marginStart="16dp"
+                        android:layout_marginTop="16dp"
+                        android:layout_marginBottom="16dp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:srcCompat="@drawable/participante" />
+
+                    <TextView
+                        android:id="@+id/textViewParticipanteName2"
+                        android:layout_width="220dp"
+                        android:layout_height="35dp"
+                        android:layout_marginStart="8dp"
+                        android:layout_marginTop="13dp"
+                        android:layout_marginEnd="18dp"
+                        android:text="Nombre"
+                        android:textColor="#26273a"
+                        android:textSize="24sp"
+                        android:textStyle="bold"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toEndOf="@+id/imageView35"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <TextView
+                        android:id="@+id/textViewCarnetPrincipal2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Carnet de identidad"
+                        android:textColor="#26273a"
+                        android:textSize="20sp"
+                        app:layout_constraintStart_toStartOf="@+id/textViewParticipanteName2"
+                        app:layout_constraintTop_toBottomOf="@+id/textViewParticipanteName2" />
+
+                    <TextView
+                        android:id="@+id/textViewTelefonoPrincipal2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Teléfono"
+                        android:textColor="#26273a"
+                        android:textSize="20sp"
+                        app:layout_constraintStart_toStartOf="@+id/textViewCarnetPrincipal2"
+                        app:layout_constraintTop_toBottomOf="@+id/textViewCarnetPrincipal2" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+            </LinearLayout>
+
+        </LinearLayout>
+    </ScrollView>
 </androidx.constraintlayout.widget.ConstraintLayout>
