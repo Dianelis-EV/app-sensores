@@ -8,7 +8,7 @@
     tools:context=".MainActivity">
 
     <ImageView
-        android:id="@+id/imageView2"
+        android:id="@+id/imageViewEliminar"
         android:layout_width="404dp"
         android:layout_height="551dp"
         app:layout_constraintEnd_toEndOf="parent"

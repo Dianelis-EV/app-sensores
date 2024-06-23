@@ -11,10 +11,9 @@ import android.widget.TextView;
 import com.example.basedatos.SesionAbierta.GetUser;
 import com.example.basedatos.bd_manager;
 import com.example.basedatos.model.Person;
-import com.example.interfazprincipal.ParticipanteActivity;
+import com.example.interfazprincipal.TodosLosParticipantesActivity;
 
 import java.util.ArrayList;
-import java.util.List;
 
 public class PrincipalActivity extends AppCompatActivity {
 
@@ -22,9 +21,11 @@ public class PrincipalActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_principal);
-        agregar_participante();
-        Mensaje();
-        visibles();
+            agregar_participante();
+            Mensaje();
+            visibles();
+
+
     }
 
     public void agregar_participante(){
@@ -34,7 +35,7 @@ public class PrincipalActivity extends AppCompatActivity {
 
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(PrincipalActivity.this, ParticipanteActivity.class);
+                Intent intent = new Intent(PrincipalActivity.this, TodosLosParticipantesActivity.class);
                 startActivity(intent);
             }
         });
@@ -50,7 +51,7 @@ public class PrincipalActivity extends AppCompatActivity {
         LinearLayout linearLayoutparticipante1 = (LinearLayout) findViewById(R.id.ParticipanteName);
         TextView textViewParticipanteName = (TextView) findViewById(R.id.textViewParticipanteName);
         TextView textViewCarnetPrincipal = (TextView) findViewById(R.id.textViewCarnetPrincipal);
-        TextView textViewTelefonoPrincipal = (TextView) findViewById(R.id.textViewTelefonoPrincipal);
+        TextView textViewTelefonoPrincipal = (TextView) findViewById(R.id.textViewTelefonol);
 
         LinearLayout linearLayoutparticipante2 = (LinearLayout) findViewById(R.id.ParticipanteName2);
         TextView textViewname2 = (TextView) findViewById(R.id.textViewParticipanteName2);
@@ -61,8 +62,7 @@ public class PrincipalActivity extends AppCompatActivity {
 
         bd_manager manager = new bd_manager(this);
         ArrayList<Person> nameList= manager.person_list();
-        int cant = manager.person_count();
-        if(cant != -1){
+
             if(!nameList.isEmpty()){
                 if(nameList.size()==1){
                     textViewparticipante.setVisibility(View.VISIBLE);
@@ -85,8 +85,8 @@ public class PrincipalActivity extends AppCompatActivity {
                     textViewTelefonoPrincipal.setText(telef);
 
                     CharSequence name2 = nameList.get(1).getName();
-                    CharSequence ci2 = nameList.get(2).getCi();
-                    CharSequence telef2 = nameList.get(2).getTelefono();
+                    CharSequence ci2 = nameList.get(1).getCi();
+                    CharSequence telef2 = nameList.get(1).getTelefono();
                     linearLayoutparticipante2.setVisibility(View.VISIBLE);
                     textViewname2.setText(name2);
                     textViewCarnetPrincipal2.setText(ci2);
@@ -113,7 +113,6 @@ public class PrincipalActivity extends AppCompatActivity {
 
                 }
             }
-        }
     }
 
 }

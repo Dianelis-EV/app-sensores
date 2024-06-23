@@ -184,8 +184,8 @@
 
                     <LinearLayout
                         android:id="@+id/idconfiguracion"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
                         android:layout_margin="10dp"
                         android:background="@drawable/top_button_bluetooth_background"
                         android:orientation="vertical">
@@ -226,7 +226,8 @@
                     android:text="@string/textViewdParticipantes"
                     android:textAlignment="viewStart"
                     android:textSize="@dimen/textViewdParticipantes2"
-                    android:textStyle="bold" />
+                    android:textStyle="bold"
+                    android:visibility="invisible" />
 
                 <TextView
                     android:id="@+id/textViewAll"
@@ -245,7 +246,7 @@
             <LinearLayout
                 android:id="@+id/ParticipanteName"
                 android:layout_width="match_parent"
-                android:layout_height="112dp"
+                android:layout_height="72dp"
                 android:layout_marginStart="10dp"
                 android:layout_marginTop="2dp"
                 android:layout_marginEnd="10dp"
@@ -260,11 +261,11 @@
 
                     <ImageView
                         android:id="@+id/imageView33"
-                        android:layout_width="86dp"
-                        android:layout_height="85dp"
+                        android:layout_width="51dp"
+                        android:layout_height="54dp"
                         android:layout_marginStart="16dp"
-                        android:layout_marginTop="16dp"
-                        android:layout_marginBottom="16dp"
+                        android:layout_marginTop="9dp"
+                        android:layout_marginBottom="9dp"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent"
@@ -272,14 +273,13 @@
 
                     <TextView
                         android:id="@+id/textViewParticipanteName"
-                        android:layout_width="220dp"
-                        android:layout_height="35dp"
-                        android:layout_marginStart="8dp"
-                        android:layout_marginTop="13dp"
-                        android:layout_marginEnd="18dp"
+                        android:layout_width="86dp"
+                        android:layout_height="18dp"
+                        android:layout_marginTop="9dp"
+                        android:layout_marginEnd="187dp"
                         android:text="Nombre"
                         android:textColor="#26273a"
-                        android:textSize="24sp"
+                        android:textSize="15sp"
                         android:textStyle="bold"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toEndOf="@+id/imageView33"
@@ -287,21 +287,21 @@
 
                     <TextView
                         android:id="@+id/textViewCarnetPrincipal"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
+                        android:layout_width="172dp"
+                        android:layout_height="15dp"
                         android:text="Carnet de identidad"
                         android:textColor="#26273a"
-                        android:textSize="20sp"
+                        android:textSize="13sp"
                         app:layout_constraintStart_toStartOf="@+id/textViewParticipanteName"
                         app:layout_constraintTop_toBottomOf="@+id/textViewParticipanteName" />
 
                     <TextView
-                        android:id="@+id/textViewTelefonoPrincipal"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
+                        android:id="@+id/textViewTelefonol"
+                        android:layout_width="61dp"
+                        android:layout_height="14dp"
                         android:text="Teléfono"
                         android:textColor="#26273a"
-                        android:textSize="20sp"
+                        android:textSize="13sp"
                         app:layout_constraintStart_toStartOf="@+id/textViewCarnetPrincipal"
                         app:layout_constraintTop_toBottomOf="@+id/textViewCarnetPrincipal" />
 
@@ -311,7 +311,7 @@
             <LinearLayout
                 android:id="@+id/ParticipanteName2"
                 android:layout_width="match_parent"
-                android:layout_height="107dp"
+                android:layout_height="80dp"
                 android:layout_marginStart="10dp"
                 android:layout_marginTop="7dp"
                 android:layout_marginEnd="10dp"
@@ -326,11 +326,11 @@
 
                     <ImageView
                         android:id="@+id/imageView35"
-                        android:layout_width="86dp"
-                        android:layout_height="85dp"
+                        android:layout_width="51dp"
+                        android:layout_height="54dp"
                         android:layout_marginStart="16dp"
-                        android:layout_marginTop="16dp"
-                        android:layout_marginBottom="16dp"
+                        android:layout_marginTop="13dp"
+                        android:layout_marginBottom="13dp"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent"
@@ -338,36 +338,33 @@
 
                     <TextView
                         android:id="@+id/textViewParticipanteName2"
-                        android:layout_width="220dp"
-                        android:layout_height="35dp"
-                        android:layout_marginStart="8dp"
+                        android:layout_width="163dp"
+                        android:layout_height="20dp"
                         android:layout_marginTop="13dp"
-                        android:layout_marginEnd="18dp"
                         android:text="Nombre"
                         android:textColor="#26273a"
-                        android:textSize="24sp"
+                        android:textSize="15sp"
                         android:textStyle="bold"
-                        app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toEndOf="@+id/imageView35"
                         app:layout_constraintTop_toTopOf="parent" />
 
                     <TextView
                         android:id="@+id/textViewCarnetPrincipal2"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
+                        android:layout_width="167dp"
+                        android:layout_height="18dp"
                         android:text="Carnet de identidad"
                         android:textColor="#26273a"
-                        android:textSize="20sp"
+                        android:textSize="13sp"
                         app:layout_constraintStart_toStartOf="@+id/textViewParticipanteName2"
                         app:layout_constraintTop_toBottomOf="@+id/textViewParticipanteName2" />
 
                     <TextView
                         android:id="@+id/textViewTelefonoPrincipal2"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
+                        android:layout_width="67dp"
+                        android:layout_height="15dp"
                         android:text="Teléfono"
                         android:textColor="#26273a"
-                        android:textSize="20sp"
+                        android:textSize="13sp"
                         app:layout_constraintStart_toStartOf="@+id/textViewCarnetPrincipal2"
                         app:layout_constraintTop_toBottomOf="@+id/textViewCarnetPrincipal2" />
 

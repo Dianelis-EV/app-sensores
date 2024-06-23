@@ -3,7 +3,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="#f2f2f2">
 
     <ImageView
         android:id="@+id/imageManchaRosa"
@@ -18,6 +19,16 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="1.0"
         app:srcCompat="@drawable/mancha_rosa_cuadado" />
+
+    <ImageButton
+        android:id="@+id/atrasLista"
+        android:layout_width="71dp"
+        android:layout_height="56dp"
+        android:background="#f2f2f2"
+        app:layout_constraintEnd_toStartOf="@+id/imageManchaRosa"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="?attr/homeAsUpIndicator" />
 
     <ImageView
         android:id="@+id/imageManchaAzul"
@@ -35,11 +46,11 @@
 
     <TextView
         android:id="@+id/textBienbenida"
-        android:layout_width="203dp"
-        android:layout_height="153dp"
-        android:layout_marginTop="19dp"
+        android:layout_width="188dp"
+        android:layout_height="131dp"
+        android:layout_marginTop="8dp"
         android:layout_marginEnd="157dp"
-        android:layout_marginBottom="468dp"
+        android:layout_marginBottom="444dp"
         android:text="Ingrese sus datos"
         android:textSize="@dimen/textBienbenida"
         android:textStyle="bold"
@@ -47,14 +58,17 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/atrasLista" />
 
     <ScrollView
-        android:layout_width="311dp"
-        android:layout_height="299dp"
+        android:id="@+id/scrollView2"
+        android:layout_width="319dp"
+        android:layout_height="286dp"
         android:layout_marginStart="22dp"
+        android:layout_marginTop="8dp"
         android:layout_marginEnd="23dp"
         android:fillViewport="true"
+        android:scrollbars="none"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textBienbenida">

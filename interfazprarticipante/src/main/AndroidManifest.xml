@@ -7,6 +7,7 @@
     <uses-permission
         android:name="android.permission.android.permission.WRITE_EXTERNAL_STORAGE"
         android:maxSdkVersion="34" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -15,11 +16,12 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Caminata">
         <activity
+            android:name=".TodosLosParticipantesActivity"
+            android:exported="false" />
+        <activity
             android:name=".ParticipanteActivity"
-            android:windowSoftInputMode="adjustPan"
-            android:exported="true">
-
-        </activity>
+            android:exported="true"
+            android:windowSoftInputMode="adjustPan"></activity>
     </application>
 
 </manifest>
