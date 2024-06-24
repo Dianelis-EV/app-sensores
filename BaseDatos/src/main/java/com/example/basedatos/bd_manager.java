@@ -230,15 +230,15 @@ public class bd_manager  {
 
     }
 
-    public void person_update(String nombre, String ci, String sexo, String telefono){
-        int id = person_getID(ci);
+    public void person_update(String ci_antiguo,String nombre, String ci, String sexo, String telefono){
+        int id = person_getID(ci_antiguo);
         String whereClause = Person_id + " = ?";
         String [] whereArgs = new String[]{String.valueOf(id)};
         ContentValues values = new ContentValues();
 
             values.put(Person_name, nombre);
             values.put(Person_ci,ci);
-            values.put(Person_sex, getsexId(sexo));
+            values.put(Person_sex, sexo);
             values.put(Person_phone,telefono);
 
         this.open_to_write();
@@ -331,32 +331,6 @@ public class bd_manager  {
         return count;
     }
 
-    public ArrayList<String> person_namelist() {
-        ArrayList<String> list = new ArrayList<String>();
-        int name = -1;
-        int ci = -1;
-        int sexo = -1;
-        int telef = -1;
-        int cant = -1;
-
-        this.open_to_read();
-        Cursor result = database.rawQuery("Select nombre FROM participante" , null);
-        if (result != null && result.getCount() >0 ) {
-            result.moveToFirst();
-            try {
-                do {
-                    name = result.getColumnIndex(Person_name);
-                    String p_nombre = result.getString(name);
-                    list.add(p_nombre);
-                } while (result.moveToNext());
-
-            } finally {
-                result.close();
-                this.close();
-            }
-        }
-        return list;
-    }
 
     public int getsexId(String sexo ){
         int  id = -1;

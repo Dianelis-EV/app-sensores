@@ -23,10 +23,20 @@ import java.text.SimpleDateFormat;
 
 public class ParticipanteActivity extends AppCompatActivity {
 
+    private String mensaje = "insertar";
+    private Person person;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_participante);
+
+        Bundle recibirdatos = getIntent().getExtras();
+        if(recibirdatos != null){
+            person =(Person) recibirdatos.get("persona");
+            llenar_datos();
+            isnotEnable();
+        }
 
             //RadioButton
             selecionados();
@@ -38,10 +48,18 @@ public class ParticipanteActivity extends AppCompatActivity {
                 @Override
                 public void onClick(View view) {
                     try{
-                            if(datosCorrectos()){
-                                Guardar_participante();
-                                Guardar_datos_participante();
-                                Toast.makeText(ParticipanteActivity.this, "Datos Insertados", Toast.LENGTH_SHORT).show();
+                            if(person == null){
+                                if(datosCorrectos()){
+                                    Guardar_participante();
+                                    Guardar_datos_participante();
+                                    Toast.makeText(ParticipanteActivity.this, "Datos Insertados", Toast.LENGTH_SHORT).show();
+                                }
+                            } else{
+
+                                if(datos_modificados_correctos()){
+                                    modificar();
+                                    Toast.makeText(ParticipanteActivity.this, "Datos nodificados", Toast.LENGTH_SHORT).show();
+                                }
                             }
                     }catch (Exception e){
                         Toast.makeText(ParticipanteActivity.this, "Ocurrio un error al insertar los datos", Toast.LENGTH_SHORT).show();
@@ -76,15 +94,18 @@ public class ParticipanteActivity extends AppCompatActivity {
                     }else{
                         bd_manager manager = new bd_manager(ParticipanteActivity.this);
                         manager.person_insert(user,nombre.getText().toString(),ci.getText().toString(),
-                                femenino.getText().toString(), telefono.getText().toString());
+                                masculino.getText().toString(), telefono.getText().toString());
                     }
 
     }
 
     public int id_baseDatos(){
         EditText ci = (EditText) findViewById(R.id.editTextCI);
-        bd_manager manager = new bd_manager(ParticipanteActivity.this);
-        int id = manager.person_getID(ci.getText().toString());
+        int id=0;
+        if(person == null){
+            bd_manager manager = new bd_manager(ParticipanteActivity.this);
+            id = manager.person_getID(ci.getText().toString());
+        }
         return id;
     }
 
@@ -149,12 +170,12 @@ public class ParticipanteActivity extends AppCompatActivity {
                                                         if(!editTextObservacion.getText().toString().equals("")){
                                                             datosCorrectos = true;
                                                         }else{
-                                                            Toast.makeText(this, "Por favor ingrese la patologia " +
-                                                                            "que presenta",
-                                                                    Toast.LENGTH_LONG).show();
-                                                        }
+                                                               Toast.makeText(this, "Por favor ingrese la patologia " +
+                                                                               "que presenta",
+                                                                       Toast.LENGTH_LONG).show();
+                                                           }
                                                     }else if (radioButtonno.isChecked()){
-                                                        datosCorrectos = true;
+                                                           datosCorrectos = true;
                                                     }else{
                                                         Toast.makeText(this, "Por favor seleccione si presenta una patologia ",
                                                                 Toast.LENGTH_LONG).show();
@@ -170,20 +191,20 @@ public class ParticipanteActivity extends AppCompatActivity {
                                                         "el largo de la pierna", Toast.LENGTH_LONG).show();
                                             }
                                         }else{
-                                            Toast.makeText(this, "Por favor ingrese la medición" +
-                                                    " de la cintura al tobillo", Toast.LENGTH_LONG).show();
-                                        }
+                                               Toast.makeText(this, "Por favor ingrese la medición" +
+                                                       " de la cintura al tobillo", Toast.LENGTH_LONG).show();
+                                           }
                                     }else{
-                                        Toast.makeText(this, "Por favor ingrese el " +
-                                                "número de calzado", Toast.LENGTH_LONG).show();
+                                         Toast.makeText(this, "Por favor ingrese el " +
+                                                   "número de calzado", Toast.LENGTH_LONG).show();
                                     }
                                 }else{
-                                    Toast.makeText(this, "Por favor ingrese " +
-                                            "una edad correcta", Toast.LENGTH_LONG).show();
+                                       Toast.makeText(this, "Por favor ingrese " +
+                                               "una edad correcta", Toast.LENGTH_LONG).show();
                                 }
                             }else{
-                                Toast.makeText(this, "Por favor ingrese " +
-                                        "una edad ", Toast.LENGTH_LONG).show();
+                                   Toast.makeText(this, "Por favor ingrese " +
+                                           "una edad ", Toast.LENGTH_LONG).show();
                             }
                         }else{
                             Toast.makeText(this, "Por favor seleccione un sexo", Toast.LENGTH_LONG).show();
@@ -201,9 +222,6 @@ public class ParticipanteActivity extends AppCompatActivity {
         }else {
             Toast.makeText(this, "Por favor inserte el nombre", Toast.LENGTH_LONG).show();
         }
-
-
-
 
         return datosCorrectos;
     }
@@ -305,4 +323,98 @@ public class ParticipanteActivity extends AppCompatActivity {
         return iscorrect;
     }
 
-}
+    //---------------------------------------------------------------------------------------------
+
+    public void setText(String text, Person person){
+        this.mensaje = text;
+        this.person = person;
+    }
+
+    public void modificar(){
+        EditText nombre = (EditText) findViewById(R.id.editTextNombre);
+        EditText ci = (EditText) findViewById(R.id.editTextCI);
+        EditText telefono = (EditText) findViewById(R.id.editTextTelefono);
+        RadioButton femenino = (RadioButton) findViewById(R.id.radioButtonfemenino);
+        RadioButton masculino = (RadioButton) findViewById(R.id.radioButtonMasculino);
+
+        if(femenino.isChecked()){
+            bd_manager manager = new bd_manager(ParticipanteActivity.this);
+            manager.person_update(person.getCi(),nombre.getText().toString(),ci.getText().toString(),
+                    femenino.getText().toString(), telefono.getText().toString());
+        }else{
+            bd_manager manager = new bd_manager(ParticipanteActivity.this);
+            manager.person_update(person.getCi(),nombre.getText().toString(),ci.getText().toString(),
+                    masculino.getText().toString(), telefono.getText().toString());
+        }
+
+
+    }
+
+    public void llenar_datos(){
+        EditText nombre = (EditText) findViewById(R.id.editTextNombre);
+        EditText ci = (EditText) findViewById(R.id.editTextCI);
+        EditText telefono = (EditText) findViewById(R.id.editTextTelefono);
+        RadioButton femenino = (RadioButton) findViewById(R.id.radioButtonfemenino);
+        RadioButton masculino = (RadioButton) findViewById(R.id.radioButtonMasculino);
+
+        nombre.setText(person.getName());
+        ci.setText(person.getCi());
+        telefono.setText(person.getTelefono());
+        if(person.getSexo().equals("Femenino")){
+            femenino.setChecked(true);
+        }else {
+            masculino.setChecked(true);
+        }
+    }
+
+
+    public void isnotEnable(){
+        EditText editTextEdad = (EditText) findViewById(R.id.editTextNumberEdad);
+        EditText editTextCalzado = (EditText) findViewById(R.id.editTextNumberCalzado);
+        EditText editTextMedicion = (EditText) findViewById(R.id.editTextNumberMedicion);
+        EditText editTextPierna = (EditText) findViewById(R.id.editTextNumberPierna);
+        EditText editTextAltura = (EditText) findViewById(R.id.editTextNumberAltura);
+        EditText editTextObservacion = (EditText) findViewById(R.id.editObservacion);
+        RadioButton radioButtonsi = (RadioButton) findViewById(R.id.radioButtonSi);
+        RadioButton radioButtonno = (RadioButton) findViewById(R.id.radioButtonNo);
+
+        editTextEdad.setEnabled(false);
+        editTextCalzado.setEnabled(false);
+        editTextMedicion.setEnabled(false);
+        editTextPierna.setEnabled(false);
+        editTextAltura.setEnabled(false);
+        editTextObservacion.setEnabled(false);
+        radioButtonsi.setEnabled(false);
+        radioButtonno.setEnabled(false);
+    }
+
+    public boolean datos_modificados_correctos(){
+        boolean datosCorrectos = false;
+
+        EditText nombre = (EditText) findViewById(R.id.editTextNombre);
+        EditText ci = (EditText) findViewById(R.id.editTextCI);
+        EditText telefono = (EditText) findViewById(R.id.editTextTelefono);
+        RadioButton femenino = (RadioButton) findViewById(R.id.radioButtonfemenino);
+        RadioButton masculino = (RadioButton) findViewById(R.id.radioButtonMasculino);
+
+        if(!nombre.getText().toString().equals("") ){
+            if(ci_iscorrect(ci.getText().toString())){
+                if(telefono_iscorrect(telefono.getText().toString())){
+                    if(femenino.isChecked()|| masculino.isChecked()){
+                        datosCorrectos = true;
+                    }else{
+                        Toast.makeText(this, "Por favor seleccione un sexo", Toast.LENGTH_LONG).show();
+                    }
+                }else {
+                    Toast.makeText(this, "El número de telèfono es: "+ telefono.getText().toString(), Toast.LENGTH_LONG).show();
+                }
+                }else {
+                    Toast.makeText(this,"Por favor inserte un numero de carnet valido", Toast.LENGTH_LONG).show();
+                }
+
+            }else {
+                Toast.makeText(this, "Por favor inserte el nombre", Toast.LENGTH_LONG).show();
+            }
+
+            return datosCorrectos;
+    }}

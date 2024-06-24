@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="textViewdispositivos">18sp</dimen>
+    <dimen name="textViewdParticipantes">18sp</dimen>
+    <dimen name="textViewDatos">18sp</dimen>
+    <dimen name="textViewSennales">18sp</dimen>
+    <dimen name="configuracion">18sp</dimen>
+    <dimen name="textViewBuscar">28sp</dimen>
+    <dimen name="textViewdParticipantes2">24sp</dimen>
+    <dimen name="texViewTodos">24sp</dimen>
+</resources>

@@ -91,6 +91,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:ems="10"
+                android:enabled="true"
                 android:hint="@string/textNombre"
                 android:inputType="text" />
 
@@ -107,8 +108,9 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:ems="10"
+                android:enabled="true"
                 android:hint="@string/ejemploCI"
-                android:inputType="text" />
+                android:inputType="numberSigned" />
 
             <TextView
                 android:id="@+id/textView5"
@@ -131,6 +133,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="37dp"
                         android:layout_marginEnd="199dp"
+                        android:enabled="true"
                         android:focusable="auto"
                         android:text="@string/femenino"
                         app:layout_constraintBottom_toBottomOf="parent"
@@ -144,6 +147,7 @@
                         android:layout_height="37dp"
                         android:layout_marginStart="154dp"
                         android:layout_marginEnd="30dp"
+                        android:enabled="true"
                         android:text="@string/masculino"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
@@ -168,6 +172,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:ems="10"
+                android:enabled="true"
                 android:hint="@string/ejemploTelefono"
                 android:inputType="phone" />
 
@@ -184,6 +189,7 @@
                 android:id="@+id/editTextNumberEdad"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:editable="true"
                 android:ems="10"
                 android:inputType="numberSigned" />
 
@@ -208,6 +214,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="37dp"
                         android:layout_marginEnd="199dp"
+                        android:enabled="true"
                         android:focusable="auto"
                         android:text="@string/textSi"
                         app:layout_constraintBottom_toBottomOf="parent"
@@ -221,6 +228,7 @@
                         android:layout_height="37dp"
                         android:layout_marginStart="154dp"
                         android:layout_marginEnd="30dp"
+                        android:enabled="true"
                         android:text="@string/textNo"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
@@ -245,6 +253,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:ems="10"
+                android:enabled="true"
                 android:inputType="numberDecimal" />
 
             <TextView
@@ -260,6 +269,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:ems="10"
+                android:enabled="true"
                 android:inputType="numberDecimal" />
 
             <TextView
@@ -275,6 +285,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:ems="10"
+                android:enabled="true"
                 android:inputType="numberDecimal" />
 
             <TextView
@@ -290,6 +301,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:ems="10"
+                android:enabled="true"
                 android:inputType="numberDecimal" />
 
             <TextView
