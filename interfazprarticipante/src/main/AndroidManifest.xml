@@ -22,6 +22,12 @@
             android:name=".ParticipanteActivity"
             android:exported="true"
             android:windowSoftInputMode="adjustPan"></activity>
+
+        <activity
+            android:name=".DatosParticipantesActivity"
+            android:exported="true"
+            android:windowSoftInputMode="adjustPan"></activity>
+
     </application>
 
 </manifest>

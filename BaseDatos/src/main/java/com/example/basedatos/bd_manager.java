@@ -8,6 +8,7 @@ import android.database.sqlite.SQLiteDatabase;
 import android.widget.Toast;
 
 import com.example.basedatos.model.Person;
+import com.example.basedatos.model.dataPerson;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -413,8 +414,9 @@ public class bd_manager  {
         this.close();
     }
 
-    public ArrayList<String> data_list() {
-        ArrayList<String> list = new ArrayList<String>();
+    public ArrayList<dataPerson> data_list(Person personas) {
+        int idpersona = person_getID(personas.getCi());
+        ArrayList<dataPerson> list = new ArrayList<dataPerson>();
         int person = -1;
         int date = -1;
         int hour = -1;
@@ -428,7 +430,7 @@ public class bd_manager  {
         int cant = -1;
 
         this.open_to_read();
-        Cursor result = database.rawQuery("Select * FROM datoparticipante" , null);
+        Cursor result = database.rawQuery("Select * FROM datoparticipante where idparticipante = " + idpersona , null);
         if (result != null && result.getCount() >0 ) {
             result.moveToFirst();
             person = result.getColumnIndex(id_person);
@@ -454,16 +456,8 @@ public class bd_manager  {
                     double altura = result.getDouble(height);
                     String observ = result.getString(observation);
 
-                    list.add(String.valueOf(persona));
-                    list.add(fecha);
-                    list.add(hora);
-                    list.add(String.valueOf(edad));
-                    list.add(String.valueOf(patol));
-                    list.add(String.valueOf(calzado));
-                    list.add(String.valueOf(cintura_tobillo));
-                    list.add(String.valueOf(pierna));
-                    list.add(String.valueOf(altura));
-                    list.add(observ);
+                    dataPerson p = new dataPerson(fecha,hora,edad,patol,calzado,cintura_tobillo,pierna,altura,observ);
+                    list.add(p);
                 } while (result.moveToNext());
 
             } finally {

@@ -1,14 +1,15 @@
 package com.example.basedatos.model;
 
+import java.io.Serializable;
 import java.sql.Date;
 import java.sql.Time;
 import java.util.ArrayList;
 
-public class dataPerson {
+public class dataPerson implements Serializable {
 
     private ArrayList<Person> person;
-    private Date date ;
-    private Time hour;
+    private String date ;
+    private String hour;
     private int ege;
     private int affection;
     private double shues;
@@ -17,7 +18,7 @@ public class dataPerson {
     private double hight;
     private String observation;
 
-    public dataPerson(Date date, Time hour, int ege, int affection, double shues, double cinturaTobillo, double leg, double hight, String observation) {
+    public dataPerson(String date, String hour, int ege, int affection, double shues, double cinturaTobillo, double leg, double hight, String observation) {
         this.date = date;
         this.hour = hour;
         this.ege = ege;
@@ -38,19 +39,19 @@ public class dataPerson {
         this.person = person;
     }
 
-    public Date getDate() {
+    public String getDate() {
         return date;
     }
 
-    public void setDate(Date date) {
+    public void setDate(String date) {
         this.date = date;
     }
 
-    public Time getHour() {
+    public String getHour() {
         return hour;
     }
 
-    public void setHour(Time hour) {
+    public void setHour(String hour) {
         this.hour = hour;
     }
 

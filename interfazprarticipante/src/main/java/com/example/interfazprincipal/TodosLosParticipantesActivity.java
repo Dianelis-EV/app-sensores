@@ -27,85 +27,66 @@ import com.example.interfazprincipal.service.IAllUse;
 import java.util.ArrayList;
 
 public class TodosLosParticipantesActivity extends AppCompatActivity implements IAllUse {
-    Object object;
-    ArrayList<Person> personArrayList = new ArrayList<>();
-    ListView listView;
-    ListAdaptador listAdaptador;
 
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_todos_los_participantes);
-        listView = (ListView) findViewById(R.id.lista_participantes);
-        actualizar_lista();
-        nueva_insertar();
-        atras_principal();
-    }
 
-    @Override
-    public void actualizar_lista(){
+        Object object;
+        ArrayList<Person> personArrayList = new ArrayList<>();
+        ListView listView;
+        ListAdaptador listAdaptador;
 
-        bd_manager manager = new bd_manager(this);
-        ArrayList<Person> persona= manager.person_list();
-        listAdaptador = new ListAdaptador(this,persona);
-        listView.setAdapter(listAdaptador);
+        @Override
+        protected void onCreate(Bundle savedInstanceState) {
+            super.onCreate(savedInstanceState);
+            setContentView(R.layout.activity_todos_los_participantes);
+            listView = (ListView) findViewById(R.id.lista_participantes);
+            actualizar_lista();
+            nueva_insertar();
+            atras_principal();
+        }
 
-        listView.setChoiceMode(ListView.CHOICE_MODE_MULTIPLE_MODAL);
-        listView.setMultiChoiceModeListener(new AbsListView.MultiChoiceModeListener() {
-            @Override
-            public void onItemCheckedStateChanged(ActionMode actionMode, int i, long l, boolean b) {
-                listAdaptador.toggleSelection(i);
-                actionMode.setTitle(String.valueOf(listView.getCheckedItemCount()));
-            }
+        @Override
+        public void actualizar_lista(){
 
-            @Override
-            public boolean onCreateActionMode(ActionMode actionMode, Menu menu) {
-               actionMode.getMenuInflater().inflate(R.menu.menu_delete_update,menu);
-                return true;
-            }
+            bd_manager manager = new bd_manager(this);
+            ArrayList<Person> persona= manager.person_list();
+            listAdaptador = new ListAdaptador(this,persona);
+            listView.setAdapter(listAdaptador);
 
-            @Override
-            public boolean onPrepareActionMode(ActionMode actionMode, Menu menu) {
-                return false;
-            }
 
-            @Override
-            public boolean onActionItemClicked(ActionMode actionMode, MenuItem menuItem) {
-                if(menuItem.getItemId() == R.id.eliminar_menu){
-                    SparseBooleanArray select = listAdaptador.getItemselect();
-                    bd_manager manager = new bd_manager(TodosLosParticipantesActivity.this);
-                    for(int i= (select.size()-1); i>=0; i--){
-                        if(select.valueAt(i)){
-                            object = listView.getAdapter().getItem(i);
-                            if (object instanceof Person){
-                                Person person =(Person) object;
-                                manager.person_delete(person.getCi());
-                                listAdaptador.eliminarItem(i);
-                                Toast.makeText(TodosLosParticipantesActivity.this,"la cantidad seleccionada es: "+ persona.size(), Toast.LENGTH_LONG).show();
-                            }
+            listView.setChoiceMode(ListView.CHOICE_MODE_MULTIPLE_MODAL);
+            listView.setMultiChoiceModeListener(new AbsListView.MultiChoiceModeListener() {
+                int poss;
+                @Override
+                public void onItemCheckedStateChanged(ActionMode actionMode, int i, long l, boolean b) {
+                    poss = i;
+                    listAdaptador.toggleSelection(i);
+                    actionMode.setTitle(String.valueOf(listView.getCheckedItemCount()));
+                }
 
-                        }
-                    }
-                    listAdaptador.notifyDataSetChanged();
-                    select.clear();
-                    actionMode.finish();
+                @Override
+                public boolean onCreateActionMode(ActionMode actionMode, Menu menu) {
+                    actionMode.getMenuInflater().inflate(R.menu.menu_delete_update,menu);
+                    return true;
+                }
 
-                }else if(menuItem.getItemId() == R.id.modificar_menu){
-                    SparseBooleanArray select = listAdaptador.getItemselect();
-                    if(select.size() == 1){
+                @Override
+                public boolean onPrepareActionMode(ActionMode actionMode, Menu menu) {
+                    return false;
+                }
+
+                @Override
+                public boolean onActionItemClicked(ActionMode actionMode, MenuItem menuItem) {
+                    if(menuItem.getItemId() == R.id.eliminar_menu){
+                        SparseBooleanArray select = listAdaptador.getItemselect();
+                        bd_manager manager = new bd_manager(TodosLosParticipantesActivity.this);
                         for(int i= (select.size()-1); i>=0; i--){
                             if(select.valueAt(i)){
                                 object = listView.getAdapter().getItem(i);
                                 if (object instanceof Person){
                                     Person person =(Person) object;
-
-                                    Intent intent = new Intent(TodosLosParticipantesActivity.this, ParticipanteActivity.class);
-                                    Bundle enviardatos = new Bundle();
-                                    enviardatos.putSerializable("persona",person);
-                                    intent.putExtras(enviardatos);
-                                    startActivity(intent);
-
-                                    finish();
+                                    manager.person_delete(person.getCi());
+                                    listAdaptador.eliminarItem(i);
+                                    Toast.makeText(TodosLosParticipantesActivity.this,"la cantidad seleccionada es: "+ persona.size(), Toast.LENGTH_LONG).show();
                                 }
 
                             }
@@ -114,48 +95,86 @@ public class TodosLosParticipantesActivity extends AppCompatActivity implements 
                         select.clear();
                         actionMode.finish();
 
-                    }else{
-                        Toast.makeText(TodosLosParticipantesActivity.this, "Solo se puede modificar 1 participante a la ves",
-                                Toast.LENGTH_LONG).show();
+                    }else if(menuItem.getItemId() == R.id.modificar_menu){
+                        SparseBooleanArray select = listAdaptador.getItemselect();
+                        if(select.size() == 1){
+                            object = listView.getAdapter().getItem(poss);
+                            if (object instanceof Person){
+                                Person person =(Person) object;
+
+                                Intent intent = new Intent(TodosLosParticipantesActivity.this, ParticipanteActivity.class);
+                                Bundle enviardatos = new Bundle();
+                                enviardatos.putSerializable("persona",person);
+                                intent.putExtras(enviardatos);
+                                startActivity(intent);
+                                finish();
+
+                            }
+
+                            listAdaptador.notifyDataSetChanged();
+                            select.clear();
+                            actionMode.finish();
+
+                        }else{
+                            Toast.makeText(TodosLosParticipantesActivity.this, "Solo se puede modificar 1 participante a la ves",
+                                    Toast.LENGTH_LONG).show();
+                        }
+
                     }
+                    return true;
+                }
+
+                @Override
+                public void onDestroyActionMode(ActionMode actionMode) {
+                    listAdaptador.eliminarSelecion();
 
                 }
-                return true;
-            }
+            });
 
-            @Override
-            public void onDestroyActionMode(ActionMode actionMode) {
-                listAdaptador.eliminarSelecion();
+            listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                @Override
+                public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                       object = listView.getAdapter().getItem(i);
+                       Person person = null;
+                       if (object instanceof Person){
+                           person =(Person) object;
+                       }
 
-            }
-        });
+                       Intent intent = new Intent(TodosLosParticipantesActivity.this, DatosParticipantesActivity.class);
+                       Bundle enviardatos = new Bundle();
+                       enviardatos.putSerializable("persona",person);
+                       intent.putExtras(enviardatos);
+                       startActivity(intent);
 
-    }
+                       finish();
+                }
+            });
+        }
 
-    @Override
-    public void nueva_insertar(){
-        ImageView insert= (ImageView) findViewById(R.id.imageViewAnnadir);
+        @Override
+        public void nueva_insertar(){
+            ImageView insert= (ImageView) findViewById(R.id.imageViewAnnadir);
 
-        insert.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(TodosLosParticipantesActivity.this, ParticipanteActivity.class);
-                startActivity(intent);
-                finish();
-            }
-        });
-    }
+            insert.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    Intent intent = new Intent(TodosLosParticipantesActivity.this, ParticipanteActivity.class);
+                    startActivity(intent);
+                    finish();
+                }
+            });
+        }
 
-    private void atras_principal(){
-        ImageButton imageButton = (ImageButton) findViewById(R.id.atras_principal);
-        imageButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-              Intent intent = getPackageManager().getLaunchIntentForPackage("com.example.caminata.PrincipalActivity");
-                intent.addCategory(Intent.CATEGORY_LAUNCHER);
-                startActivity(intent);
-                finish();
-            }
-        });
-    }
+        private void atras_principal(){
+            ImageButton imageButton = (ImageButton) findViewById(R.id.atras_principal);
+            imageButton.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    Intent intent = getPackageManager().getLaunchIntentForPackage("com.example.caminata.PrincipalActivity");
+                    intent.addCategory(Intent.CATEGORY_LAUNCHER);
+                    startActivity(intent);
+                    finish();
+                }
+            });
+        }
 }
